@@ -1,0 +1,131 @@
+.container{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: rgba(0,0,0,0.15);
+    backdrop-filter: blur(2px);
+    position: fixed;
+    z-index: 1;
+    // border: 1px solid red;
+    transition: 0.6s;
+}
+.container2{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+    position: fixed;
+    z-index: 1;
+    // border: 1px solid red;
+    transition: 0.6s;
+}
+.maxSize{
+    width: 98%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+    padding: 10px 10px 0 0;
+    // border: 1px solid white;
+}
+.maxSize .divLogo{
+    height: 70px;
+    width: 70px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    // border: 1px solid red;
+    .imgLogo{
+        height: 100%;
+    }
+}
+.maxSize .textMenu1{
+    position: absolute;
+    top: 100px;
+    right: -200px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.maxSize .textMenu2{
+    position: absolute;
+    color: white;
+    font-size: 24rem;
+    font-weight: 600;
+    top: 100px;
+    right: 16px;
+    opacity: 1;
+    transition: 1s;
+}
+.maxSize .textMenu2:hover{
+    text-decoration: underline;
+}
+.maxSize .textMenu3{
+    position: absolute;
+    top: 150px;
+    right: -200px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.maxSize .textMenu4{
+    position: absolute;
+    color: white;
+    font-size: 24rem;
+    font-weight: 600;
+    top: 150px;
+    right: 16px;
+    opacity: 1;
+    transition: 1.1s;
+}
+.maxSize .textMenu4:hover{
+    text-decoration: underline;
+}
+.maxSize .textMenu5{
+    position: absolute;
+    top: 200px;
+    right: -200px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.maxSize .textMenu6{
+    position: absolute;
+    color: white;
+    font-size: 24rem;
+    font-weight: 600;
+    top: 200px;
+    right: 16px;
+    opacity: 1;
+    transition: 1.2s;
+}
+.maxSize .textMenu6:hover{
+    text-decoration: underline;
+}
+.maxSize .textMenu7{
+    position: absolute;
+    top: 250px;
+    right: -200px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.maxSize .textMenu8{
+    position: absolute;
+    color: white;
+    font-size: 24rem;
+    font-weight: 600;
+    top: 250px;
+    right: 16px;
+    opacity: 1;
+    transition: 1.3s;
+}
+.maxSize .textMenu8:hover{
+    text-decoration: underline;
+}

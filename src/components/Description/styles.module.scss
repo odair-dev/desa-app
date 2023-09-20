@@ -1,0 +1,85 @@
+.container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .maxSize{
+        height: fit-content;
+        width: 98%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // border: 2px solid orangered;
+        .divText{
+            width: 100%;
+            border: 1px solid red;
+            h2{
+                margin: 20rem 0 20rem 8rem;
+                color: rgb(50, 50, 50);
+            }
+        }
+        .divMap{
+            width: 100%;
+            height: 400px;
+            display: flex;
+            // justify-content: right;
+            margin-bottom: 50rem;
+
+            .maps{
+                width: 100%;
+                // max-width: 800px;
+                height: 100%;
+                border: none;
+            }
+        }
+        .divImg{
+            width: 98vw;
+            height: fit-content;
+            border: 1px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // margin-bottom: 100rem;
+            gap: 8rem;
+            overflow: hidden;
+
+            .imgPlanta{
+                height: 50vw;
+                width: 100%;
+                width: 85vw;    
+                // max-width: 800px;
+                margin: 16rem 0;
+                border: 1px solid red;
+                // margin-right: -60px;
+            }
+        }
+
+    }
+}
+@media(min-width: 768px) {
+    .container .maxSize .divImg{
+        gap: 20rem;
+
+        .imgPlanta{
+            height: 35vw;
+            width: 60vw;
+            margin: 16rem;
+        }
+    }
+    .container .maxSize .divMap{
+        width: 100%;
+        height: 600px;
+        display: flex;
+        // justify-content: right;
+        margin-bottom: 50rem;
+
+        .maps{
+            width: 100%;
+            // max-width: 800px;
+            height: 100%;
+            border: none;
+        }
+    }
+}
