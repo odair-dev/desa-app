@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     .maxSize{
-        height: fit-content;
         width: 98%;
         max-width: 1200px;
         display: flex;
@@ -14,72 +13,194 @@
         // border: 2px solid orangered;
         .divText{
             width: 100%;
-            border: 1px solid red;
+            // border: 1px solid red;
             h2{
                 margin: 20rem 0 20rem 8rem;
-                color: rgb(50, 50, 50);
+                color: rgb(30, 50, 80);
+                font-weight: 200;
+            }
+        }
+        .divImg{
+            width: 98vw;
+            height: 42vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8rem;
+            overflow: hidden;
+            // border: 1px solid red;
+            position: relative;
+            .imgCarrousel1{
+                height: 40vw;
+                width: 67vw;     
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 1;
+                right: 217vw;
+            }
+            .imgCarrousel2{
+                height: 40vw;
+                width: 67vw;    
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 1;
+                right: 150vw;
+                transition: 1s ease-in-out;
+            }
+            .imgCarrousel3{
+                height: 40vw;
+                width: 67vw;     
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 1;
+                right: 83vw;
+                transition: 1s ease-in-out;
+            }
+            .imgCarrousel4{
+                height: 40vw;
+                width: 67vw;     
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 2;
+                right: 15vw;
+                transition: 1s ease-in-out;
+            }
+            .imgCarrousel5{
+                height: 40vw;
+                width: 67vw;     
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 1;
+                right: -53vw;
+                transition: 1s ease-in-out;
+            }
+            .imgCarrousel6{
+                height: 40vw;
+                width: 67vw;     
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 1;
+                right: -120vw;
+                transition: 1s ease-in-out;
+            }
+            .imgCarrousel7{
+                height: 40vw;
+                width: 67vw;     
+                margin: 16rem 0;
+                position: absolute;
+                // z-index: 1;
+                right: -187vw;
+            }
+            .btnRight{
+                position: absolute;
+                z-index: 1;
+                width: 8vw;
+                height: 30vw;
+                right: 20rem;
+                font-weight: 600;
+                color: rgb(30, 50, 80);
+                background-color: transparent;
+                border: none;
+                i{
+                    font-weight: 600;
+                    font-size: 24rem;
+                }
+            }
+            .btnLeft{
+                position: absolute;
+                z-index: 1;
+                width: 8vw;
+                height: 30vw;
+                left: 20rem;
+                font-weight: 600;
+                color: rgb(30, 50, 80);
+                background-color: transparent;
+                border: none;
+                i{
+                    font-weight: 600;
+                    font-size: 24rem;
+                }
             }
         }
         .divMap{
             width: 100%;
             height: 400px;
             display: flex;
-            // justify-content: right;
             margin-bottom: 50rem;
-
             .maps{
                 width: 100%;
-                // max-width: 800px;
                 height: 100%;
                 border: none;
             }
         }
-        .divImg{
-            width: 98vw;
+        .divDescription{
             height: fit-content;
-            border: 1px solid red;
+            width: 100%;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            // margin-bottom: 100rem;
-            gap: 8rem;
-            overflow: hidden;
-
-            .imgPlanta{
-                height: 50vw;
+            background-color: white;
+            .left{
                 width: 100%;
-                width: 85vw;    
-                // max-width: 800px;
-                margin: 16rem 0;
-                border: 1px solid red;
-                // margin-right: -60px;
+                min-width: 310px;
+                max-width: 400px;
+                height: 500px;
+                display: none;
+                // border: 1px solid blue;
+                p{
+                    // margin: 20rem 0 0 60rem;
+                    font-size: 20rem;
+                    font-weight: 200;
+                    color: rgb(30, 50, 80);
+                }
+            }
+            .right{
+                width: 100%;
+                max-width: 720px;
+                min-width: 300px;
+                height: 70vw;
+                max-height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                // border: 1px solid blue;
+                .imgPlanta{
+                    max-height: 95%;
+                }
             }
         }
 
     }
 }
 @media(min-width: 768px) {
-    .container .maxSize .divImg{
-        gap: 20rem;
-
-        .imgPlanta{
-            height: 35vw;
-            width: 60vw;
-            margin: 16rem;
+    .container .maxSize {
+        .divImg{
+            gap: 20rem;
+            .btnRight{
+                background-color: rgba(255, 255, 255, 0.7);
+                width: 4vw;
+                height: 4vw;
+                border-radius: 50rem;
+            }
+            .btnLeft{
+                background-color: rgba(255, 255, 255, 0.7);
+                width: 4vw;
+                height: 4vw;
+                border-radius: 50rem;
+            }
         }
-    }
-    .container .maxSize .divMap{
-        width: 100%;
-        height: 600px;
-        display: flex;
-        // justify-content: right;
-        margin-bottom: 50rem;
-
-        .maps{
-            width: 100%;
-            // max-width: 800px;
-            height: 100%;
-            border: none;
+        .divMap{
+            height: 600px;
         }
     }
 }
+@media(min-width: 1143px) {
+    .container .maxSize .divDescription .left{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-left: 16rem;
+    }
+}
+
