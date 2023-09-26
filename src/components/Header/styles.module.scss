@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // background-color: rgba(0,0,0,0.15);
+    // background-color: rgba(255,255,255,0.15);
     backdrop-filter: blur(2px);
     position: fixed;
     z-index: 2;
@@ -36,14 +36,14 @@
     // border: 1px solid white;
 }
 .maxSize .divLogo{
-    height: 70px;
-    width: 70px;
+    height: 90px;
+    width: 90px;
     display: flex;
     gap: 10px;
     align-items: flex-end;
     position: absolute;
     left: 8px;
-    top: 8px;
+    top: -10px;
     // border: 1px solid red;
     .imgLogo{
         height: 100%;
@@ -132,6 +132,4 @@
 }
 .maxSize .textMenu8:hover{
     font-size: 30rem;
-    font-weight: 900;
-    // color: rgb(30, 50, 80);
 }

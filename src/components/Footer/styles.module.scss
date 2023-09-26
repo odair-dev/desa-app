@@ -4,66 +4,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // background-color:  rgb(40, 70, 100);
-    background-color:  #232429;
     background-color: rgb(30, 50, 80);
-    // border: 1px solid red;
     .maxSize{
         width: 98%;
         max-width: 1200px;
         height: 100%;
         display: flex;
         justify-content: space-evenly;
-        align-items: center;
-        // border: 1px solid white;
         flex-wrap: wrap;
+        margin: 16rem 0;
         .logo{
             width: 33%;
             min-width: 320px;
-            height: 160px;
-            // max-height: 200px;
-            // min-height: 100px;
-            // border: 1px solid red;
+            height: fit-content;
             display: flex;
-            justify-content: center;
-            align-items: baseline;
-            overflow: hidden;
-            .imgLogo{
-                width: 150px;
-                height: 180px;
-                // border: 1px solid white;
-            }
-        }
-        .info{
-            width: 33%;
-            min-width: 320px;
-            height: 300px;
-            max-height: 200px;
-            min-height: 100px;
-            // border: 1px solid red;
-            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            // gap: 16rem;
-            h3{
-                color: white;
-                font-weight: 300;
-            }
-            .divIcons{
-                height: 50px;
-                // width: 100%;
-                display: flex;
-                justify-content: space-evenly;
-                i{
-                    margin: 16rem;
-                    color: white;
-                    font-size: 24rem;
-                    // border: 1px solid red;
-                }
+            .imgLogo{
+                width: 110px;
+                height: 110px;
+                margin-top: 16rem;
             }
             h4{
-                margin-top: 16rem;
+                margin-top: 8rem;
                 color: white;
             }
             p{
@@ -73,59 +37,65 @@
                 font-size: 12rem;
             }
         }
+        .info{
+            width: 33%;
+            min-width: 320px;
+            height: fit-content;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            h3{
+                font-size: 24rem;
+                color: white;
+                font-weight: 300;
+                margin: 30rem 0 16rem 0;
+            }
+            .divIcons{
+                height: 50px;
+                display: flex;
+                flex-direction: column;
+                gap: 13rem;
+                a{
+                    text-decoration: none;
+                    color: white;
+                    font-size: 14rem;
+                    font-weight: 200;
+                    margin-bottom: 16rem;
+                    i{
+                        margin-right: 8rem;
+                        font-size: 18rem;
+                    }
+                }
+            }
+        }
         .message{
             width: 33%;
             min-width: 320px;
-            height: 300px;
-            max-height: 200px;
-            min-height: 100px;
-            // border: 1px solid red; 
+            height: fit-content; 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            div{
-                width: 250px;
-                height: fit-content;
-                h3{
-                    font-size: 14rem;
-                    color: white;
-                    margin-top: 16rem;
-                    text-align: left;
-                    font-weight: 400;
-                }
+            h2{
+                color: white;
+                font-weight: 300;
+                margin: 30rem 0 16rem 0;
             }
-            form{
-                width: 250px;
-                height: 250px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
-                input{
-                    width: 100%;
-                    height: 30px;
-                }
-                textarea{
-                    width: 100%;
-                    height: 60px;
-                }
-                button{
-                    width: 100%;
-                    padding: 8px;
-                    // border-radius: 8px;
-                    border: 2px solid white;
-                    background-color: transparent;
-                    color: white;
-                    font-weight: 600;
-                    transition: 0.5s;
-                }
-                button:hover{
-                    border: 2px solid green;
-                    background-color: green;
-                    // color: rgb(30, 50, 80);
-                }
-            }           
+            a{
+                font-size: 16rem;
+                color: white;
+                margin-bottom: 10rem;
+                text-align: left;
+                font-weight: 200;
+            }
+            h3{
+                font-size: 14rem;
+                color: white;
+                margin-bottom: 10rem;
+                text-align: left;
+                font-weight: 200;
+            }          
         }
     }
 }

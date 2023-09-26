@@ -1,15 +1,10 @@
 import styles from './styles.module.scss';
-import { Montserrat, Tangerine, Italiana } from 'next/font/google';
+import { Montserrat, Tangerine } from 'next/font/google';
 
 
 const tangerine = Tangerine({
     subsets: ['latin'],
     weight: '700'
-})
-
-const italiana = Italiana({
-  subsets: ['latin'],
-  weight: '400'
 })
 
 const montserrat = Montserrat({

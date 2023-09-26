@@ -1,0 +1,94 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .blueBackground{
+        width: 100%;
+        height: 33vh;
+        background-color: rgb(30, 50, 80);
+        position: absolute;
+        top: 0;
+    }
+    .formEmail{
+        width: 96%;
+        max-width: 900px;
+        height: 100%;
+        max-height: 500px;
+        background-color: white;
+        position: absolute;
+        border-radius: 16rem;
+        box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        padding: 16rem;
+        .divLogo{
+            height: 100rem;
+            width: 100%;
+            background-color: rgb(30, 50, 80);
+            margin-bottom: 10rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14rem 14rem 0 0;
+            position: relative;
+            a{
+                color: white;
+                align-self: flex-start;
+                justify-self: flex-start;
+                text-decoration: underline;
+                position: absolute;
+                left: 8rem;
+                top: 8rem;
+                font-size: 14rem;
+            }
+            a:hover{
+                color: rgb(200, 10, 50);
+            }
+            .imgLogo{
+                height: 100rem;
+                width: 100rem;
+            }
+        }
+        .lblEmail{
+            margin: 8rem 0;
+            color: rgb(30, 50, 80);
+        }
+        .email{
+            height: 40rem;
+            border: none;
+            border-bottom: 2px solid rgb(30, 50, 80);
+            border-radius: 8rem;
+            padding: 16rem;
+        }
+        .txtEmail{
+            height: 200rem;
+            padding: 16rem;
+            border: 2px solid rgb(30, 50, 80);
+            border-radius: 8rem;
+        }
+        .btnSend{
+            height: 40rem;
+            width: 100%;
+            margin-top: 12rem;
+            align-self: flex-end;
+            border-radius: 8rem;
+            border: 2px solid rgb(30, 50, 80);
+            background-color: transparent;
+            color: rgb(30, 50, 80);
+            transition: 0.5s;   
+        }
+        .btnSend:hover{
+            background-color: rgb(30, 50, 80);
+            color: white;
+        }
+    }
+}
+@media(min-width: 426px) {
+    .btnSend{
+        max-width: 300rem;
+    }
+}

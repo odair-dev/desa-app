@@ -1,7 +1,7 @@
 'use client';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import Logotipo from '../../img/Preferencial.png';
+import Logotipo from '../../img/Logo.png';
 import Sandwich from '../Sandwich';
 import { useContext } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function Header(){
     const { modalMobile, setModalMobile } = useContext(GlobalContext);
+
     return(
         <div className={!modalMobile ? styles.container : styles.container2}>
             <div className={styles.maxSize}>
