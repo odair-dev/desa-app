@@ -13,8 +13,8 @@
         top: 0;
     }
     .formEmail{
-        width: 96%;
-        max-width: 600px;
+        width: fit-content;
+        max-width: 96%;
         height: fit-content;
         max-height: 96%;
         background-color: white;
@@ -24,8 +24,9 @@
         display: flex;
         flex-direction: column;
         padding: 16rem;
+        transition: 0.5s;
         .divLogo{
-            // height: 130rem;
+            height: 100rem;
             width: 100%;
             background-color: rgb(30, 50, 80);
             margin-bottom: 10rem;
@@ -53,46 +54,16 @@
                 height: 100rem;
                 width: 100rem;
             }
-            .divContacts{
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding-left: 8rem;
-                padding-right: 8rem;
-                gap: 16rem;
-                // margin-bottom: 8rem;
-                a{
-                    font-size: 16rem;
-                    color: white;
-                    margin-bottom: 10rem;
-                    text-align: left;
-                    font-weight: 200;
-                }
-                h3{
-                    font-size: 14rem;
-                    color: white;
-                    margin-bottom: 10rem;
-                    text-align: left;
-                    font-weight: 200;
-                }
-            }
         }
-        .lblEmail{
+        .divDateOff{
+            display: none;
+        }
+        .divHourOff{
+            display: none;
+        }
+        p{
             margin: 8rem 0;
             color: rgb(30, 50, 80);
-        }
-        .email{
-            height: 40rem;
-            border: 1px solid rgb(30, 50, 80);
-            border-radius: 8rem;
-            padding: 12rem;
-        }
-        .txtEmail{
-            height: 150rem;
-            padding: 12rem;
-            border: 1px solid rgb(30, 50, 80);
-            border-radius: 8rem;
         }
         .btnSend{
             height: 40rem;
@@ -112,8 +83,8 @@
         }
     }
 }
-@media(min-width: 426px) {
-    .btnSend{
-        max-width: 300rem;
-    }
-}
+// @media(min-width: 426px) {
+//     .btnSend{
+//         max-width: 300rem;
+//     }
+// }

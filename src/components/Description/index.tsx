@@ -62,16 +62,18 @@ export default function Description(){
                 </div>
                 <div className={styles.divDescription} data-aos="fade-left" data-aos-duration="1500">
                     <div className={styles.left}>
-                        <p><i className="fa-solid fa-bed"></i> 2 Quartos</p>
-                        <p><i className="fa-solid fa-bath"></i> 1 Suite</p>
-                        <p><i className="fa-solid fa-couch"></i> Sala de Estar</p>
+                        <p><i className="fa-solid fa-bed"></i> 3 quartos, sendo um, suíte.</p>
+                        <p><i className="fa-solid fa-couch"></i> Sala</p>
                         <p><i className="fa-solid fa-utensils"></i> Cozinha</p>
-                        <p><i className="fa-solid fa-shower"></i> Banheiro</p>
                         <p><i className="fa-solid fa-sun"></i> Sacada</p>
+                        <p><i className="fa-solid fa-shower"></i> Banheiro</p>
+                        <p><i className="fa-solid fa-faucet-drip"></i> Lavanderia</p>
                         <p><i className="fa-brands fa-gripfire"></i> Churrasqueira</p>
-                        <p><i className="fa-solid fa-faucet-drip"></i> Opção com Lavanderia</p>
-                        <p><i className="fa-solid fa-elevator"></i> Elevador</p>
-                        <p><i className="fa-solid fa-car"></i> Estacionamento</p>
+                        <p><i className="fa-solid fa-car"></i> Vaga de garagem</p>
+                        <p><i className="fa-solid fa-temperature-high"></i> Espera de água quente</p>
+                        <p><i className="fa-solid fa-snowflake"></i> Espera de arcondicionado</p>
+                        <p><i className="fa-solid fa-car"></i> <i className="fa-solid fa-car"></i> Possibilidade de Vaga Extra</p>
+                        <p><i className="fa-solid fa-elevator"></i> Prédio com Elevador</p>
                     </div>
                     <div className={styles.right} data-aos="fade-left" data-aos-duration="1500">
                         <Image src={Planta} alt='Planta' className={styles.imgPlanta}/>
