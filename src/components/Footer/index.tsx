@@ -23,15 +23,18 @@ export default function Footer(){
                 <div className={styles.info}>
                     <h3 className={montserrat.className}>Redes Sociais</h3>
                     <div className={styles.divIcons}>
-                        <a href="https://www.facebook.com/desaincorporadora/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-square-facebook"></i> www.facebook.com/desaincorporadora/</a>
-                        <a href="https://www.instagram.com/desaincorporacoes/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i> www.instagram.com/desaincorporacoes/</a>         
+                        <a href="https://www.facebook.com/desaincorporadora/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-square-facebook"></i></a>
+                        <a href="https://www.instagram.com/desaincorporacoes/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>   
+                        <a href=""><i className="fa-brands fa-linkedin"></i></a>      
                     </div>
                 </div>
                 <div className={styles.message}>
-                    <h2 className={montserrat.className}>Contato</h2>
-                    <Link href={`/email/`}><i className="fa-regular fa-envelope"></i> Falar por e-mail</Link>
-                    <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5551989768161" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    <h3><i className="fa-solid fa-phone"></i> (51) 989.768.161</h3>
+                    <div className={styles.divContact}>
+                        <h2 className={montserrat.className}>Contato</h2>
+                        <Link href={`/email/`}><i className="fa-regular fa-envelope"></i> E-mail</Link>
+                        <a href="https://wa.me/5551989768161" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+5551989768161"><i className="fa-solid fa-phone"></i> (51) 989.768.161</a>
+                    </div>
                 </div>
             </div>
         </div>

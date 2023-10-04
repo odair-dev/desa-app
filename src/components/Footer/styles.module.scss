@@ -12,7 +12,6 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        margin: 16rem 0;
         .logo{
             width: 33%;
             min-width: 320px;
@@ -24,17 +23,14 @@
             .imgLogo{
                 width: 110px;
                 height: 110px;
-                margin-top: 16rem;
-            }
-            h4{
-                margin-top: 8rem;
-                color: white;
+                margin-top: 45rem;
             }
             p{
                 margin-top: 8rem;
                 color: white;
                 font-weight: 200;
                 font-size: 12rem;
+                margin-bottom: 45rem;
             }
         }
         .info{
@@ -48,24 +44,25 @@
             h3{
                 font-size: 24rem;
                 color: white;
-                font-weight: 300;
-                margin: 30rem 0 16rem 0;
+                font-weight: 600;
+                margin: 30rem 0 8rem 0;
             }
             .divIcons{
-                height: 50px;
+                height: 40px;
                 display: flex;
-                flex-direction: column;
-                gap: 13rem;
+                align-items: flex-end;
+                gap: 40rem;
                 a{
                     text-decoration: none;
-                    color: white;
-                    font-size: 14rem;
-                    font-weight: 200;
-                    margin-bottom: 16rem;
+                    color: rgb(185,185,185);
+                    transition: 0.5s;
                     i{
-                        margin-right: 8rem;
-                        font-size: 18rem;
+                        font-size: 28rem;
                     }
+                }
+                a:hover{
+                    color: white;
+                    margin-bottom: 6rem;
                 }
             }
         }
@@ -77,25 +74,45 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            h2{
-                color: white;
-                font-weight: 300;
-                margin: 30rem 0 16rem 0;
+            .divContact{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                h2{
+                    color: white;
+                    font-weight: 600;
+                    margin: 30rem 0 16rem 0;
+                }
+                a{
+                    font-size: 16rem;
+                    color: rgb(185,185,185);
+                    margin-bottom: 10rem;
+                    text-align: left;
+                    font-weight: 200;
+                    transition: 0.5s;
+                }
+                a:hover{
+                    margin-left: 8rem;
+                    color: white;
+                }
+                h3{
+                    font-size: 14rem;
+                    color: rgb(185,185,185);
+                    margin-bottom: 10rem;
+                    text-align: left;
+                    font-weight: 200;
+                    transition: 0.5s;
+                }          
+                h3:hover{
+                    margin-left: 8rem;
+                    color: white;
+                }
             }
-            a{
-                font-size: 16rem;
-                color: white;
-                margin-bottom: 10rem;
-                text-align: left;
-                font-weight: 200;
-            }
-            h3{
-                font-size: 14rem;
-                color: white;
-                margin-bottom: 10rem;
-                text-align: left;
-                font-weight: 200;
-            }          
         }
+    }
+}
+@media(min-width: 980px) {
+    .container .maxSize .logo{
+        background: radial-gradient(circle, rgba(30,150,150,0.5) 0%, rgba(60,100,160,0.5) 20%, rgba(30,50,80,0.5) 70%);       
     }
 }
