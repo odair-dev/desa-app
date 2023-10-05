@@ -53,7 +53,7 @@ export default function Login() {
             <form className={styles.formLogin} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.divLogo}>
                     <div className={styles.btnGoBack} onClick={()=>goBack()}>Voltar</div>
-                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo}/>
+                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo} onClick={()=>goBack()}/>
                 </div>
                 <label htmlFor="inpUsername" className={styles.lblLogin}>Usuário:</label>
                 <input 

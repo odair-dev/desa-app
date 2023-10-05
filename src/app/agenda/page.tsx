@@ -45,7 +45,7 @@ export default function Agenda() {
             <form className={styles.formEmail} onSubmit={handleSubmit(confirmDate)}>
                 <div className={styles.divLogo}>
                     <div className={styles.btnGoBack} onClick={()=>goBack()}>Voltar</div>
-                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo}/>
+                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo} onClick={()=>goBack()}/>
                 </div>
                 <div className={!choicedate ? styles.divDateOn : styles.divDateOff}>
                     <p>Escolha uma data:</p>

@@ -16,10 +16,10 @@ export default function Footer(){
     return(
         <div className={styles.container}>
             <div className={styles.maxSize}>
-                <div className={styles.logo}>
+                <a className={styles.logo} href='#home'>
                     <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo}/>
                     <p>CNPJ: 29.015.972/0001-31</p>
-                </div>
+                </a>
                 <div className={styles.info}>
                     <h3 className={montserrat.className}>Redes Sociais</h3>
                     <div className={styles.divIcons}>

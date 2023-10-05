@@ -52,10 +52,10 @@ export default function Email() {
             <form className={styles.formEmail} onSubmit={handleSubmit(handleSend)}>
                 <div className={styles.divLogo}>
                     <div className={styles.btnGoBack} onClick={()=>goBack()}>Voltar</div>
-                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo}/>
+                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo} onClick={()=>goBack()}/>
                     <div className={styles.divContacts}>
-                        <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5551989768161" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <h3><i className="fa-solid fa-phone"></i> (51) 989.768.161</h3>
+                        <a href="https://wa.me/5551989768161" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="tel:+5551989768161"><i className="fa-solid fa-phone"></i> (51) 989.768.161</a>
                     </div>
                 </div>
                 <label htmlFor="inpName" className={styles.lblEmail}>Nome:</label>

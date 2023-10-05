@@ -47,11 +47,12 @@
                 cursor: pointer;
             }
             .btnGoBack:hover{
-                color: rgb(200, 10, 50);
+                color: orange;
             }
             .imgLogo{
                 height: 100rem;
                 width: 100rem;
+                cursor: pointer;
             }
             .divContacts{
                 width: 100%;
@@ -61,20 +62,18 @@
                 padding-left: 8rem;
                 padding-right: 8rem;
                 gap: 16rem;
-                // margin-bottom: 8rem;
                 a{
                     font-size: 16rem;
-                    color: white;
+                    color: rgb(185, 185, 185);
                     margin-bottom: 10rem;
                     text-align: left;
                     font-weight: 200;
+                    transition: 0.5s;
                 }
-                h3{
-                    font-size: 14rem;
+                a:hover{
+                    margin-left: 5rem;
+                    margin-right: 5rem;
                     color: white;
-                    margin-bottom: 10rem;
-                    text-align: left;
-                    font-weight: 200;
                 }
             }
         }

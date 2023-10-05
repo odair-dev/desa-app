@@ -41,11 +41,12 @@
             justify-content: flex-start;
             align-items: center;
             flex-direction: column;
+            // border: 1px solid white;
             h3{
                 font-size: 24rem;
                 color: white;
                 font-weight: 600;
-                margin: 30rem 0 8rem 0;
+                margin: 60rem 0 8rem 0;
             }
             .divIcons{
                 height: 40px;
@@ -74,6 +75,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+            // border: 1px solid orangered;
             .divContact{
                 display: flex;
                 flex-direction: column;
@@ -81,7 +83,7 @@
                 h2{
                     color: white;
                     font-weight: 600;
-                    margin: 30rem 0 16rem 0;
+                    margin: 60rem 0 16rem 0;
                 }
                 a{
                     font-size: 16rem;
