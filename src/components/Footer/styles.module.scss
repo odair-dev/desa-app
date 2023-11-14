@@ -80,6 +80,7 @@
                 display: flex;
                 flex-direction: column;
                 width: 50%;
+                align-items: center;
                 h2{
                     color: white;
                     font-weight: 600;
@@ -116,5 +117,8 @@
 @media(min-width: 980px) {
     .container .maxSize .logo{
         background: radial-gradient(circle, rgba(30,150,150,0.5) 0%, rgba(60,100,160,0.5) 20%, rgba(30,50,80,0.5) 70%);       
+    }
+    .container .maxSize .message .divContact{
+        align-items: flex-start;
     }
 }
