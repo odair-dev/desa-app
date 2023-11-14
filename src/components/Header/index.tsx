@@ -1,50 +1,150 @@
-'use client';
-import styles from './styles.module.scss';
-import Image from 'next/image';
-import Logotipo from '../../img/Logo.png';
-import Sandwich from '../Sandwich';
+"use client";
+import styles from "./styles.module.scss";
+import Image from "next/image";
+import Logotipo from "../../img/Logo.png";
+import Sandwich from "../Sandwich";
 import { useContext } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
 import Link from "next/link";
-import { UserContext } from '@/providers/UserContext';
-import { destroyCookie } from 'nookies';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from "@/providers/UserContext";
+import { destroyCookie } from "nookies";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ScheduleContext } from "@/providers/ScheduleContext";
 
+export default function Header() {
+  const { modalMobile, setModalMobile, modalSchedules, setModalSchedules } =
+    useContext(GlobalContext);
+  const { user, setUser, setToken, setUserId } = useContext(UserContext);
+  const { getMySchedule, setMySchedules } = useContext(ScheduleContext);
 
-export default function Header(){
-    const { modalMobile, setModalMobile } = useContext(GlobalContext);
-    const { user, setUser, setToken, setUserId } = useContext(UserContext)
+  function logout() {
+    destroyCookie(null, "nextauth.token");
+    setUser(null);
+    setToken(null);
+    setUserId(null);
+    toast.success("Logout realizado com sucesso");
+    setModalMobile(false);
+    setMySchedules(null);
+  }
 
-    function logout(){
-        destroyCookie(null, 'nextauth.token');
-        setUser(null);
-        setToken(null);
-        setUserId(null);
-        toast.success("Logout realizado com sucesso");
-        setTimeout(() => {
-            setModalMobile(false);
-        }, 2250);
-    }
-
-    return(
-        <div className={!modalMobile ? styles.container : styles.container2}>
-            <ToastContainer position="bottom-right" autoClose={1250}/>
-            <div className={styles.maxSize}>
-                <div className={styles.divLogo}>
-                    <Image src={Logotipo} alt='Logotipo' className={styles.imgLogo}/>
-                </div>
-                {user ? <h3>Olá, {user.name}</h3> : null}
-                <Sandwich />
-                <Link href={`/agenda/`} className={!modalMobile ? styles.textMenu : styles.textMenu1}>Agendar Visita</Link>
-                {/* <div className={!modalMobile ? styles.divLine : styles.divLine1}></div> */}
-                <Link href={`/email/`} className={!modalMobile ? styles.textMenu : styles.textMenu2}>Contato</Link>
-                {!user ? 
-                    <Link href={`/login/`} className={!modalMobile ? styles.textMenu : styles.textMenu3}>Login</Link>
-                : 
-                    <button className={!modalMobile ? styles.btnBefore : styles.btnAfter} onClick={()=>logout()}>Logout</button>
-                }
-            </div>
+  return (
+    <div className={!modalMobile ? styles.container : styles.container2}>
+      <ToastContainer position="top-right" autoClose={1250} />
+      <div className={styles.maxSize}>
+        <div className={styles.divLogo}>
+          <Image src={Logotipo} alt="Logotipo" className={styles.imgLogo} />
         </div>
-    )
+        {user ? <h3>Olá, {user.name.split(" ", 1)}</h3> : null}
+        <Sandwich />
+        <Link
+          onClick={() => {
+            setModalSchedules(false);
+            setModalMobile(false);
+            getMySchedule();
+          }}
+          // href={`/myschedules`}
+          href={`#`}
+          className={
+            modalMobile && modalSchedules
+              ? styles.textMenu11
+              : styles.textMenu101
+          }
+        >
+          Meus Agendamentos
+        </Link>
+        <Link
+          onClick={() => {
+            setModalSchedules(false);
+            setModalMobile(false);
+          }}
+          href={`/agenda`}
+          className={
+            modalMobile && modalSchedules
+              ? styles.textMenu12
+              : styles.textMenu102
+          }
+        >
+          Novo Agendamento
+        </Link>
+        {/* <div className={!modalMobile ? styles.divLine : styles.divLine1}></div> */}
+        <Link
+          href={`/email/`}
+          className={
+            modalMobile && !modalSchedules ? styles.textMenu3 : styles.textMenu
+          }
+        >
+          Contato
+        </Link>
+        {!user ? (
+          <>
+            <Link
+              href={`/agenda`}
+              className={
+                modalMobile && !modalSchedules
+                  ? styles.textMenu1
+                  : styles.textMenu
+              }
+            >
+              Agendamentos
+            </Link>
+            <Link
+              href={`/login/`}
+              className={
+                modalMobile && !modalSchedules
+                  ? styles.textMenu4
+                  : styles.textMenu
+              }
+            >
+              Login
+            </Link>
+            <Link
+              href={`/registro/`}
+              className={
+                modalMobile && !modalSchedules
+                  ? styles.textMenu2
+                  : styles.textMenu
+              }
+            >
+              Cadastrar
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              href={`#`}
+              onClick={() => setModalSchedules(true)}
+              className={
+                modalMobile && !modalSchedules
+                  ? styles.textMenu1
+                  : styles.textMenu
+              }
+            >
+              Agendamentos
+            </Link>
+            <button
+              className={
+                modalMobile && !modalSchedules
+                  ? styles.btnAfter
+                  : styles.btnBefore
+              }
+              onClick={() => logout()}
+            >
+              Logout
+            </button>
+            <Link
+              href={`/user`}
+              className={
+                modalMobile && !modalSchedules
+                  ? styles.textMenu2
+                  : styles.textMenu
+              }
+            >
+              Editar Usuário
+            </Link>
+          </>
+        )}
+      </div>
+    </div>
+  );
 }
