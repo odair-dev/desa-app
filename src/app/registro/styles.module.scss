@@ -1,0 +1,85 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .blueBackground{
+        width: 100%;
+        height: 33vh;
+        background-color: rgb(30, 50, 80);
+        position: absolute;
+        top: 0;
+    }
+    .formLogin{
+        width: 96%;
+        max-width: 400px;
+        height: fit-content;
+        max-height: 96%;
+        background-color: white;
+        position: absolute;
+        border-radius: 16rem;
+        box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        padding: 20rem;
+        .divLogo{
+            height: 100rem;
+            width: 100%;
+            background-color: rgb(30, 50, 80);
+            margin-bottom: 10rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14rem 14rem 0 0;
+            position: relative;
+            .btnGoBack{
+                color: white;
+                align-self: flex-start;
+                justify-self: flex-start;
+                text-decoration: underline;
+                position: absolute;
+                left: 8rem;
+                top: 8rem;
+                font-size: 14rem;
+                cursor: pointer;
+            }
+            .btnGoBack:hover{
+                color: orange;
+            }
+            .imgLogo{
+                height: 100rem;
+                width: 100rem;
+                cursor: pointer;
+            }
+        }
+        .lblLogin{
+            margin: 8rem 0;
+            color: rgb(30, 50, 80);
+        }
+        .inpLogin{
+            height: 40rem;
+            border: 1px solid rgb(30, 50, 80);
+            border-radius: 8rem;
+            padding: 12rem;
+        }
+        .btnLogin{
+            height: 40rem;
+            width: 100%;
+            margin-top: 20rem;
+            align-self: flex-end;
+            border-radius: 8rem;
+            background-color: #1e3250;
+            border: 1px solid #1e3250;
+            color: #ffffff;
+            font-weight: 600;
+            transition: 0.5s;   
+        }
+        .btnLogin:hover{
+            background-color: #229A00;
+            border: 1px solid #229A00;
+        }
+    }
+}
