@@ -1,62 +1,111 @@
-import { api } from "@/services/api"
-import Link from "next/link";
+"use client";
+import styles from "./styles.module.scss";
+import Image from "next/image";
+import Logotipo from "../../img/Logo.png";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { ScheduleContext } from "@/providers/ScheduleContext";
+import styles2 from "@/sass/loadingSchedule.module.scss";
+import Modal from "@/components/Modal";
+import { UserContext } from "@/providers/UserContext";
+import { toast } from "react-toastify";
 
-interface IAddress{
-    id: string;
-	street: string;
-	number: string;
-	district: string;
-	city: string;
-	state: string;
-	zip_code: number;
-}
+export default function Schedules() {
+  const [reloading, setReloading] = useState(true);
+  const [free2, setFree2] = useState<string[] | null>(null);
+  const { user } = useContext(UserContext);
+  const router = useRouter();
+  const {
+    schedules,
+    getSchedule,
+    date,
+    free,
+    setFree,
+    setHour,
+    setConfirmSchedule,
+    confirmSchedule,
+  } = useContext(ScheduleContext);
 
-interface ICategory{
-    id: string;
-    name: string;
-}
+  function goBack() {
+    router.push("/");
+  }
 
-export interface ISchedules{
-    id: string;
-    enterprise: string;
-    sold: boolean;
-    address: IAddress;
-    category: ICategory;
-}
+  useEffect(() => {
+    setFree2(free);
+    // console.log(free);
+  }, [free]);
 
-async function getSchedules() {
-    try {
-        // const response = await api.get('properties/')
-        const response = await api.get<ISchedules[]>('properties/')
-        return response.data
-    } catch (error) {
-        console.error(error)
-        throw new Error('Failed')
-    }    
-}
+  async function refresh() {
+    setReloading(true);
+    schedules.map(async (i) => {
+      await getSchedule(date.toISOString().slice(0, 10), i);
+    });
+    // setReloading(false);
+    setTimeout(() => {
+      setReloading(false);
+    }, 1500);
+  }
 
-export default async function Schedules() {
+  function handleTime(hour: string) {
+    if (user) {
+      setHour(hour);
+      // const data = { date: `${date.toISOString().slice(0, 10)}`, hour };
+      // console.log(data);
+      setConfirmSchedule(true);
+    } else {
+      setConfirmSchedule(false);
+      toast.warn("É necessário estar logado para esta operação.");
+      router.push("/login");
+    }
+  }
 
-    const schedules = await getSchedules();
-    const results = schedules.results;
-    // console.log(schedules);
-    // console.log(schedules.results);
+  useEffect(() => {
+    setFree2(null);
+    setFree(null);
+    refresh();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return (
-        <div>
-            <ul>
-                {
-                    results.map((schedule) => (
-                        <li key={schedule.id}>
-                            <Link href={`/schedules/${schedule.id}`}>{schedule.enterprise}</Link>
-                            {/* <h1>{schedule.enterprise}</h1>
-                            <h2>{schedule.address.street}, {schedule.address.number}</h2>
-                            <h2>{schedule.address.district}</h2>
-                            <h2>{schedule.address.city}</h2>
-                            <h2>{schedule.category.name}</h2> */}
-                        </li>
-                    ))}
-            </ul>
+  return (
+    <div className={styles.container}>
+      {confirmSchedule ? <Modal /> : null}
+      <div className={styles.blueBackground}></div>
+      {reloading ? (
+        <div className={styles2.loading}>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-    )
+      ) : (
+        <form className={styles.formSchedules}>
+          <div className={styles.divLogo}>
+            <Image
+              src={Logotipo}
+              alt="Logotipo"
+              className={styles.imgLogo}
+              onClick={() => goBack()}
+              priority={true}
+            />
+            <p>{date.toLocaleDateString()}</p>
+          </div>
+          <div className={styles.divHourOn}>
+            <p>Escolha um horário:</p>
+            <div className={styles.divSchedules}>
+              {free2 != null
+                ? free2.map((hour: string) => (
+                    <div
+                      className={styles.cardSchedule}
+                      key={hour}
+                      onClick={() => handleTime(hour)}
+                    >
+                      <p className={styles.pHour}>{hour}</p>
+                    </div>
+                  ))
+                : null}
+            </div>
+          </div>
+        </form>
+      )}
+    </div>
+  );
 }

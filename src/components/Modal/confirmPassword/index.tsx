@@ -23,7 +23,6 @@ export default function ModalPassword() {
     setUserToUpdate(null);
     const statusOk = await signIn(dataFormated);
     if (statusOk) {
-      toast.success("Senha correta");
       const statusOk2 = await updateUser(userToUpdate, user!.id);
       if (statusOk2) {
         toast.success("Atualização realizada com sucesso");
@@ -31,7 +30,7 @@ export default function ModalPassword() {
           window.location.reload();
         }, 1700);
       } else {
-        toast.error("Erro, tente outro e-mail ou atualize mais tarde.");
+        toast.error("Este e-mail já existe.");
       }
       setUserToUpdate(null);
     } else {

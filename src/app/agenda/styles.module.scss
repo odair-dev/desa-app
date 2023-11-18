@@ -15,6 +15,7 @@
     .formEmail{
         width: fit-content;
         max-width: 96%;
+        min-width: 300px;
         height: fit-content;
         max-height: 96%;
         overflow: auto;
@@ -69,12 +70,13 @@
         }
         .divSchedules{
             width: 100%;
+            min-width: 250px;
             max-width: 600px;
             display: flex;
-            justify-content: center;
+            // justify-content: space-between;
             flex-wrap: wrap;
             .cardSchedule{
-                width: 125px;
+                width: 110px;
                 display: flex;
                 justify-content: center;
                 border-radius: 8px;
@@ -134,8 +136,3 @@
         }
     }
 }
-// @media(min-width: 426px) {
-//     .btnSend{
-//         max-width: 300rem;
-//     }
-// }

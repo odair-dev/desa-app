@@ -10,6 +10,15 @@
     align-items: center;
     gap: 10px;
     padding: 10px;
+    h2{
+      color: white;
+      font-weight: 200;
+      // border-top: 1px solid white;
+      // border-bottom: 1px solid white;
+      // width: 100%;
+      text-align: center;
+      // padding: 8px 0;
+    }
     .divLogo{
       height: 90px;
       width: 90px;
@@ -25,11 +34,10 @@
       display: flex;
       justify-content: space-around;
       gap: 10px;
-      // border: 1px solid red;
       margin-bottom: 8px;
       .btn{
         height: 35px;
-        border: 1px solid cadetblue;
+        border: 1px solid #f5f5f5;
         background-color: transparent;
         width: 100px;
         border-radius: 8px;
@@ -38,49 +46,103 @@
         align-items: center;
         font-weight: 600;
         font-size: 18rem;
-        color: cadetblue;
+        color: #f5f5f5;
         transition: 0.5s;
         cursor: pointer;
         &:hover{
           background-color: rgb(50, 80, 130);
           border: 1px solid rgb(50, 80, 130);
-          // box-shadow: 1px 1px 2px white;
-          box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.4);
+          // box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.4);
           color: white;
         }
       }
     }
-    .card{
-      background-color: white;
-      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-      padding: 16px;
-      border-radius: 16px;
+    .allSchedules{
       width: 100%;
-      max-width: 300px;
+      height: fit-content;
+      min-height: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: space-around;
       align-items: center;
-      gap: 8px;
-      .divDateTime{
+      flex-wrap: wrap;
+      gap: 10px;
+      .card{
+        background-color: #E1B941;
+        box-shadow: 4px 3px 4px 1px rgba(0, 0, 0, 0.5);
+        padding: 16px;
         width: 100%;
-        height: fit-content;
-        min-height: 30px;
-        padding: 4px;
-        // background-color: rgb(200, 200, 200);
+        max-width: 300px;
         display: flex;
-        justify-content: space-between;
-        border: 1px solid rgb(30, 50, 80);
-        border-radius: 4px;
-      }
-      .divObservation{
-        width: 100%;
-        padding: 4px;
-        height: fit-content;
-        min-height: 30px;
-        // background-color: rgb(200, 200, 200);
-        border: 1px solid rgb(30, 50, 80);
-        display: flex;
-        border-radius: 4px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        h3{
+          background-color: rgb(30, 50, 80);
+          color: rgb(245, 245, 245);
+          padding: 4px 8px;
+          border-radius: 8px;
+          border-top: 1px solid white;
+          border-bottom: 1px solid white;
+          width: 100%;
+          text-align: center;
+        }
+        .divDateTime{
+          width: 100%;
+          height: fit-content;
+          min-height: 30px;
+          padding: 8px;
+          display: flex;
+          justify-content: space-between;
+          background-color: rgba(255, 255, 255, 0.5);
+          border-radius: 4px;
+          p{
+            font-weight: 600;
+            color: rgb(30, 50, 80);
+          }
+        }
+        .divDefault{
+          width: 100%;
+          height: fit-content;
+          min-height: 30px;
+          padding: 4px;
+          display: flex;
+          justify-content: center;
+          background-color: rgba(255, 255, 255, 0.5);
+          border-radius: 4px;
+          p{
+            font-size: 14rem;
+            color: rgb(30, 50, 80);
+          }
+        }
+        .divNameUser{
+          width: 100%;
+          height: fit-content;
+          min-height: 60px;
+          padding: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 4px;
+          background-color: rgba(255, 255, 255, 0.5);
+          p{
+            text-align: center;
+            font-weight: 600;
+            color: rgb(30, 50, 80);
+          }
+        }
+        .divObservation{
+          width: 100%;
+          padding: 8px;
+          height: 100px;
+          overflow-y: auto;
+          background-color: rgba(255, 255, 255, 0.5);
+          display: flex;
+          border-radius: 4px;
+          p{
+            font-size: 14rem;
+            color: rgb(30, 50, 80);
+          }
+        }
       }
     }
 }    

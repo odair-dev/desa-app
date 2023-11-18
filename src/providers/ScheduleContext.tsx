@@ -1,7 +1,17 @@
 "use client";
 import { api } from "@/services/api";
-import { Dispatch, SetStateAction, createContext, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useEffect,
+  useState,
+} from "react";
 import { useRouter } from "next/navigation";
+import { IUserState } from "./UserContext";
+import { parseCookies } from "nookies";
+import jwt from "jsonwebtoken";
+import { toast } from "react-toastify";
 
 export interface INewSchedule {
   date: string;
@@ -9,19 +19,31 @@ export interface INewSchedule {
   observation: string;
 }
 
+export interface IProperty {
+  id: string;
+  name: string;
+  size: number;
+  avaliable: boolean;
+  category: string;
+}
+
 export interface IFullSchedule {
   id: string;
   date: string;
   hour: string;
   observation: string;
+  property: IProperty;
   property_id: string;
   user_id: string;
+  user: IUserState;
 }
 
 export interface IScheduleContext {
   getSchedule: (date: string, schedule: string) => Promise<void>;
-  free: string[];
-  setFree: Dispatch<SetStateAction<string[]>>;
+  // free: string[];
+  free: string[] | null;
+  setFree: Dispatch<SetStateAction<string[] | null>>;
+  // setFree: Dispatch<SetStateAction<string[]>>;
   date: Date;
   setDate: Dispatch<SetStateAction<Date>>;
   hour: string;
@@ -30,7 +52,8 @@ export interface IScheduleContext {
   setConfirmSchedule: Dispatch<SetStateAction<boolean>>;
   createSchedule: (date: INewSchedule, id: string) => Promise<boolean>;
   schedules: string[];
-  getMySchedule: () => Promise<void>;
+  // getMySchedule: () => Promise<void>;
+  getMySchedule: () => Promise<boolean>;
   mySchedules: IFullSchedule[] | null;
   setMySchedules: Dispatch<SetStateAction<IFullSchedule[] | null>>;
 }
@@ -49,7 +72,8 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
   }
   const [date, setDate] = useState(dateSistem);
   const [hour, setHour] = useState("");
-  const [free, setFree] = useState([""]);
+  const [loadFree, setLoadFree] = useState([""]);
+  const [free, setFree] = useState<string[] | null>(null);
   const [mySchedules, setMySchedules] = useState<IFullSchedule[] | null>(null);
   const schedulesFree: string[] = [];
   const router = useRouter();
@@ -79,6 +103,16 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
     "19:00",
     "19:30",
   ];
+
+  // async function findSchedule() {
+  //   schedules.map(async (i) => {
+  //     const iFinal = await getSchedule(date.toISOString().slice(0, 10), i);
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   console.log(free);
+  // }, [free]);
 
   async function getSchedule(date: string, schedule: string) {
     try {
@@ -117,15 +151,45 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
   }
 
   async function getMySchedule() {
-    try {
-      const response = await api.get(`/schedules`);
-      if (response.data.length > 0) {
-        setMySchedules(response.data);
+    setMySchedules(null);
+    const { "nextauth.token": recoveredToken } = parseCookies();
+    if (recoveredToken) {
+      const decoded = jwt.decode(recoveredToken);
+      if (decoded != null) {
+        try {
+          api.defaults.headers.common.Authorization = `Bearer ${recoveredToken}`;
+          const response = await api.get(`/schedules`);
+          if (response.data.length > 0) {
+            setMySchedules(response.data);
+          }
+          return true;
+          // console.log("Sucesso ao buscar dados");
+          // toast.success("Agenda atualizada com sucesso");
+        } catch (error) {
+          console.log("Falha ao buscar dados \n", error);
+          toast.error(
+            "Falha ao buscar dados, tente mais tarde ou faça login novamente"
+          );
+          return false;
+        } finally {
+          router.push("/myschedules");
+        }
+      } else {
+        return false;
+        // router.push("/");
+        // toast.warn(
+        //   "Faça login novamente para continuar utilizando a aplicação."
+        // );
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 1500);
       }
-    } catch (error) {
-      console.log("Falha ao buscar dados \n", error);
-    } finally {
-      router.push("/myschedules");
+    } else {
+      return false;
+      // router.push("/");
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1500);
     }
   }
 

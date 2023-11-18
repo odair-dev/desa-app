@@ -1,15 +1,16 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { useForm } from "react-hook-form";
 import { UserContext } from "@/providers/UserContext";
 import Image from "next/image";
 import Logotipo from "../../img/Logo.png";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/providers/GlobalContext";
 import ModalPassword from "@/components/Modal/confirmPassword";
+import nookies from "nookies";
 
 type Inputs = {
   id: string;
@@ -24,6 +25,19 @@ export default function User() {
     useContext(UserContext);
   const { setModalMobile } = useContext(GlobalContext);
   const router = useRouter();
+
+  // useEffect(() => {
+  //   const { "nextauth.token": recoveredToken } = parseCookies();
+  //   if (recoveredToken) {
+  //     const decoded = jwt.decode(recoveredToken);
+  //     if (decoded == null) {
+  //       router.push("/login");
+  //     }
+  //   } else {
+  //     router.push("/login");
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const {
     register,
@@ -48,7 +62,7 @@ export default function User() {
     if (user) {
       setUserToUpdate(data);
     } else {
-      console.log("Para realizar atualização é necessário fazer login");
+      // console.log("Para realizar atualização é necessário fazer login");
       toast.error("Para realizar atualização é necessário fazer login");
     }
   }
@@ -61,7 +75,6 @@ export default function User() {
   return (
     <div className={styles.container}>
       <ModalPassword />
-      <ToastContainer position="bottom-right" autoClose={1250} />
       <div className={styles.blueBackground}></div>
       <form className={styles.formLogin} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.divLogo}>
@@ -118,6 +131,7 @@ export default function User() {
         <button className={styles.btnLogin} type="submit">
           Atualizar
         </button>
+        <div className={styles.btnRemove}>Excluir Conta</div>
       </form>
     </div>
   );

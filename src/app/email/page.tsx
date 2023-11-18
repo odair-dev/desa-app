@@ -2,11 +2,9 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Logotipo from "../../img/Logo.png";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { GlobalContext } from "@/providers/GlobalContext";
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -33,9 +31,7 @@ export default function Email() {
       )
       .then(
         (response) => {
-          toast.success(
-            "Obrigado pela mensagem! Em breve entraremos em contato."
-          );
+          toast.success("E-mail enviado com sucesso.");
           // console.log("Email enviado", response.status, response.text);
           reset({ name: "", email: "", text: "" });
           setModalMobile(false);
@@ -61,7 +57,6 @@ export default function Email() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       />
-      <ToastContainer position="bottom-right" autoClose={2500} />
       <div className={styles.blueBackground}></div>
       <form className={styles.formEmail} onSubmit={handleSubmit(handleSend)}>
         <div className={styles.divLogo}>
@@ -73,6 +68,7 @@ export default function Email() {
             alt="Logotipo"
             className={styles.imgLogo}
             onClick={() => goBack()}
+            priority={true}
           />
           <div className={styles.divContacts}>
             <a

@@ -4,6 +4,8 @@ import "@/sass/main.scss";
 import { GlobalProvider } from "@/providers/GlobalContext";
 import { UserProvider } from "@/providers/UserContext";
 import { ScheduleProvider } from "@/providers/ScheduleContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ToastContainer position="bottom-right" autoClose={2000} />
         <GlobalProvider>
           <UserProvider>
             <ScheduleProvider>{children}</ScheduleProvider>

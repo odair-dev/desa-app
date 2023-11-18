@@ -1,0 +1,111 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .blueBackground{
+        width: 100%;
+        height: 33vh;
+        background-color: rgb(30, 50, 80);
+        position: absolute;
+        top: 0;
+    }
+    .formSchedules{
+        width: fit-content;
+        min-width: 300px;
+        max-width: 96%;
+        height: fit-content;
+        min-height: 300px;
+        max-height: 96%;
+        overflow: auto;
+        background-color: white;
+        position: absolute;
+        border-radius: 16rem;
+        box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        padding: 16rem;
+        transition: 0.5s;
+        .divLogo{
+            height: 120px;
+            width: 100%;
+            background-color: rgb(30, 50, 80);
+            margin-bottom: 10rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14rem 14rem 0 0;
+            position: relative;
+            .btnGoBack{
+                color: white;
+                align-self: flex-start;
+                justify-self: flex-start;
+                text-decoration: underline;
+                position: absolute;
+                left: 8rem;
+                top: 8rem;
+                font-size: 14rem;
+                cursor: pointer;
+            }
+            .btnGoBack:hover{
+                color: orange;
+            }
+            .imgLogo{
+                height: 100rem;
+                width: 100rem;
+                cursor: pointer;
+            }
+            p{
+                color: white;
+                position: absolute;
+                bottom: 4px;
+                left: 4px;
+                font-weight: 600;
+            }
+        }
+        .divHourOn{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            p{
+                font-weight: 600;
+                color: rgb(30, 50, 80);
+            }
+            .divSchedules{
+                width: fit-content;
+                min-width: 250px;
+                max-width: 620px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                .cardSchedule{
+                    width: 80px;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 8px;
+                    padding: 8px;
+                    margin: 4px;
+                    background-color: #F5F5F5;
+                    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #E4E4E4;
+                    }
+                    .pHour{
+                        font-weight: 600;
+                        color: rgb(30, 50, 80);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 678px) {
+    .container .formSchedules .divHourOn .divSchedules{
+        justify-content: flex-start;
+    }
+}

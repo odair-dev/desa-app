@@ -82,6 +82,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
 
   useEffect(() => {
     verifySigin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -118,9 +119,12 @@ export function UserProvider({ children }: IDefaultProviderProps) {
           setUserId(`${id}`);
         }
       }
-      setCookie(undefined, "nextauth.token", tokenReceived, {
+      setCookie(null, "nextauth.token", tokenReceived, {
         maxAge: 60 * 60 * 1, //1 hour
       });
+      // setCookie(undefined, "nextauth.token", tokenReceived, {
+      //   maxAge: 60 * 60 * 1, //1 hour
+      // });
       return true;
     } catch (error) {
       console.log("Não foi possível realizar o login. \n", error);

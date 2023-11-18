@@ -30,10 +30,15 @@ export default function Header() {
 
   return (
     <div className={!modalMobile ? styles.container : styles.container2}>
-      <ToastContainer position="top-right" autoClose={1250} />
+      {/* <ToastContainer position="top-right" autoClose={1250} /> */}
       <div className={styles.maxSize}>
         <div className={styles.divLogo}>
-          <Image src={Logotipo} alt="Logotipo" className={styles.imgLogo} />
+          <Image
+            priority={true}
+            src={Logotipo}
+            alt="Logotipo"
+            className={styles.imgLogo}
+          />
         </div>
         {user ? <h3>Olá, {user.name.split(" ", 1)}</h3> : null}
         <Sandwich />
@@ -86,7 +91,7 @@ export default function Header() {
                   : styles.textMenu
               }
             >
-              Agendamentos
+              Agendar Visita
             </Link>
             <Link
               href={`/login/`}

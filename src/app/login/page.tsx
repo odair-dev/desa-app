@@ -5,9 +5,7 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "@/providers/UserContext";
 import Image from "next/image";
 import Logotipo from "../../img/Logo.png";
-import Link from "next/link";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/providers/GlobalContext";
 
@@ -52,7 +50,6 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <ToastContainer position="bottom-right" autoClose={1250} />
       <div className={styles.blueBackground}></div>
       <form className={styles.formLogin} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.divLogo}>
@@ -64,6 +61,7 @@ export default function Login() {
             alt="Logotipo"
             className={styles.imgLogo}
             onClick={() => goBack()}
+            priority={true}
           />
         </div>
         <label htmlFor="inpEmail" className={styles.lblLogin}>
