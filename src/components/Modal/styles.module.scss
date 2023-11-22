@@ -21,7 +21,7 @@
         height: fit-content;
         min-height: 200px;
         max-width: 500px;
-        background-color: darkslategray;
+        background-color: rgb(50, 80, 80);
         border-radius: 16px;
         padding: 16px;
         box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.3);
@@ -63,8 +63,8 @@
             justify-content: center;
             .pName{
                 color: white;
-                font-weight: 700;
-                font-size: 40rem;
+                font-weight: 600;
+                font-size: 24rem;
                 margin-bottom: 8px;
             }
         }
@@ -91,7 +91,6 @@
                 border-radius: 4px;
                 margin-top: 8px;
                 padding: 12px;
-                // background-color: green;
                 background-color: rgb(25, 125, 100);
                 color: white;
                 font-weight: 600;

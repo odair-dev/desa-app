@@ -19,6 +19,12 @@ export interface INewSchedule {
   observation: string;
 }
 
+export interface ISendEmail {
+  name: string;
+  email: string;
+  text: string;
+}
+
 export interface IProperty {
   id: string;
   name: string;
@@ -40,10 +46,8 @@ export interface IFullSchedule {
 
 export interface IScheduleContext {
   getSchedule: (date: string, schedule: string) => Promise<void>;
-  // free: string[];
   free: string[] | null;
   setFree: Dispatch<SetStateAction<string[] | null>>;
-  // setFree: Dispatch<SetStateAction<string[]>>;
   date: Date;
   setDate: Dispatch<SetStateAction<Date>>;
   hour: string;
@@ -52,10 +56,11 @@ export interface IScheduleContext {
   setConfirmSchedule: Dispatch<SetStateAction<boolean>>;
   createSchedule: (date: INewSchedule, id: string) => Promise<boolean>;
   schedules: string[];
-  // getMySchedule: () => Promise<void>;
   getMySchedule: () => Promise<boolean>;
   mySchedules: IFullSchedule[] | null;
   setMySchedules: Dispatch<SetStateAction<IFullSchedule[] | null>>;
+  removeSchedule: (id: string) => Promise<boolean>;
+  sendEmail: (date: ISendEmail) => Promise<boolean>;
 }
 
 export const ScheduleContext = createContext({} as IScheduleContext);
@@ -104,19 +109,10 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
     "19:30",
   ];
 
-  // async function findSchedule() {
-  //   schedules.map(async (i) => {
-  //     const iFinal = await getSchedule(date.toISOString().slice(0, 10), i);
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   console.log(free);
-  // }, [free]);
-
   async function getSchedule(date: string, schedule: string) {
     try {
       if (date == new Date().toISOString().slice(0, 10)) {
+        console.log("IF - Escolheu data de hoje");
         let addOneHour = new Date().getTime() + 60 * 60 * 1000;
         let newTime = new Date(addOneHour);
         let hour = newTime.getHours();
@@ -134,6 +130,8 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
             schedulesFree.push(schedule);
             setFree(schedulesFree.sort());
           }
+        } else {
+          console.log("Horário vencido: ", schedule);
         }
       } else {
         const response = await api.post(`/schedules/free/schedules`, {
@@ -143,6 +141,9 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
         if (response.data.free_time_schedule) {
           schedulesFree.push(schedule);
           setFree(schedulesFree.sort());
+          console.log("Livre: ", schedule);
+        } else {
+          console.log("Ocupado: ", schedule);
         }
       }
     } catch (error) {
@@ -163,8 +164,6 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
             setMySchedules(response.data);
           }
           return true;
-          // console.log("Sucesso ao buscar dados");
-          // toast.success("Agenda atualizada com sucesso");
         } catch (error) {
           console.log("Falha ao buscar dados \n", error);
           toast.error(
@@ -176,20 +175,9 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
         }
       } else {
         return false;
-        // router.push("/");
-        // toast.warn(
-        //   "Faça login novamente para continuar utilizando a aplicação."
-        // );
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 1500);
       }
     } else {
       return false;
-      // router.push("/");
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1500);
     }
   }
 
@@ -205,9 +193,33 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
     }
   }
 
+  async function removeSchedule(id: string) {
+    try {
+      const response = await api.delete(`/schedules/${id}`);
+      return true;
+    } catch (error) {
+      console.log("Falha ao excluir \n", error);
+      return false;
+    }
+  }
+
+  async function sendEmail(date: ISendEmail) {
+    try {
+      const response = await api.post(`/schedules/contato`, {
+        ...date,
+      });
+      return true;
+    } catch (error) {
+      console.log("Falha ao enviar e-mail \n", error);
+      return false;
+    }
+  }
+
   return (
     <ScheduleContext.Provider
       value={{
+        sendEmail,
+        removeSchedule,
         getSchedule,
         free,
         setFree,

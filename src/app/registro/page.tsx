@@ -43,11 +43,9 @@ export default function Register() {
           router.push("/");
         }, 1700);
       } else {
-        // console.log("Erro ao realizar o registro");
         toast.error("Erro ao realizar o registro");
       }
     } else {
-      // console.log("Para realizar cadastro é necessário fazer logout");
       toast.error("Para realizar cadastro é necessário fazer logout");
     }
   }
@@ -161,19 +159,3 @@ export default function Register() {
     );
   }
 }
-
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   const cookies = nookies.get(ctx);
-//   if (cookies["nextauth.token"]) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   } else {
-//     return {
-//       props: {},
-//     };
-//   }
-// };

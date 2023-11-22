@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styles from "./styles.module.scss";
 import { useForm } from "react-hook-form";
 import { UserContext } from "@/providers/UserContext";
@@ -26,19 +26,6 @@ export default function User() {
   const { setModalMobile } = useContext(GlobalContext);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   const { "nextauth.token": recoveredToken } = parseCookies();
-  //   if (recoveredToken) {
-  //     const decoded = jwt.decode(recoveredToken);
-  //     if (decoded == null) {
-  //       router.push("/login");
-  //     }
-  //   } else {
-  //     router.push("/login");
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   const {
     register,
     handleSubmit,
@@ -62,7 +49,6 @@ export default function User() {
     if (user) {
       setUserToUpdate(data);
     } else {
-      // console.log("Para realizar atualização é necessário fazer login");
       toast.error("Para realizar atualização é necessário fazer login");
     }
   }

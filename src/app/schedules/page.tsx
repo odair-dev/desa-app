@@ -32,15 +32,20 @@ export default function Schedules() {
 
   useEffect(() => {
     setFree2(free);
-    // console.log(free);
   }, [free]);
+
+  useEffect(() => {
+    console.log(free2);
+  }, [free2]);
 
   async function refresh() {
     setReloading(true);
+    console.log(date);
+    console.log("Data informada: ", date.toISOString().slice(0, 10));
+    console.log("Data sistema: ", new Date().toISOString().slice(0, 10));
     schedules.map(async (i) => {
       await getSchedule(date.toISOString().slice(0, 10), i);
     });
-    // setReloading(false);
     setTimeout(() => {
       setReloading(false);
     }, 1500);
@@ -49,8 +54,6 @@ export default function Schedules() {
   function handleTime(hour: string) {
     if (user) {
       setHour(hour);
-      // const data = { date: `${date.toISOString().slice(0, 10)}`, hour };
-      // console.log(data);
       setConfirmSchedule(true);
     } else {
       setConfirmSchedule(false);

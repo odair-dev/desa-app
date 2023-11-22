@@ -30,14 +30,6 @@ type signInData = {
   password: string;
 };
 
-type IDecodedToken = {
-  exp: number;
-  iat: number;
-  jti: string;
-  token_type: string;
-  user_id: string;
-};
-
 export interface IUserState {
   id: string;
   name: string;
@@ -137,7 +129,6 @@ export function UserProvider({ children }: IDefaultProviderProps) {
       const response = await api.post("/users", {
         ...data,
       });
-      // console.log(response);
       return true;
     } catch (error) {
       console.log("Não foi possível realizar o cadastro. \n", error);

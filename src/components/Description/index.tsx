@@ -9,6 +9,12 @@ import { useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { Raleway } from "next/font/google";
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export default function Description() {
   const [slide, setSlide] = useState(1);
@@ -20,31 +26,27 @@ export default function Description() {
   function handleClickRight() {
     if (slide == 1) {
       setSlide(7);
-      // console.log(slide)
     } else {
       setSlide(slide - 1);
-      // console.log(slide)
     }
   }
 
   function handleClickLeft() {
     if (slide == 7) {
       setSlide(1);
-      // console.log(slide)
     } else {
       setSlide(slide + 1);
-      // console.log(slide)
     }
   }
   return (
     <div className={styles.container}>
-      <div className={styles.maxSize}>
+      <div className={styles.maxSize} id="detail">
         <div
           className={styles.divText}
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <h2 id="detail">Conheça os detalhes</h2>
+          <h2 className={raleway.className}>Conheça os detalhes</h2>
         </div>
         <div
           className={styles.divImg}
@@ -227,7 +229,7 @@ export default function Description() {
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <h2>Plantas</h2>
+          <h2 className={raleway.className}>Plantas</h2>
         </div>
         <div
           className={styles.divDescription}

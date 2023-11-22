@@ -34,9 +34,7 @@ export default function Login() {
         reset({ email: "", password: "" });
         toast.success("Login realizado com sucesso");
         setModalMobile(false);
-        setTimeout(() => {
-          router.push("/");
-        }, 1700);
+        router.push("/");
       } else {
         toast.error("Usuário ou senha inválidos");
       }

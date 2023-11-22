@@ -8,6 +8,12 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalContext } from "@/providers/GlobalContext";
+import { Raleway } from "next/font/google";
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const tangerine = Tangerine({
   subsets: ["latin"],
@@ -43,17 +49,13 @@ export default function Modal() {
     if (statusOk) {
       toast.success("Agendamento realizado com sucesso");
       setModalMobile(false);
-      setTimeout(() => {
-        setConfirmSchedule(false);
-        getMySchedule();
-      }, 2000);
+      setConfirmSchedule(false);
+      getMySchedule();
     } else {
       toast.error("Falha ao agendar, tente novamente.");
       setModalMobile(false);
-      setTimeout(() => {
-        setConfirmSchedule(false);
-        router.push("/");
-      }, 1700);
+      setConfirmSchedule(false);
+      router.push("/");
     }
   }
 
@@ -65,7 +67,7 @@ export default function Modal() {
         </p>
         <form className={styles.formSchedule} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.divName}>
-            <p className={`${styles.pName} ${tangerine.className}`}>
+            <p className={`${styles.pName} ${raleway.className}`}>
               Residencial Lisboa
             </p>
           </div>

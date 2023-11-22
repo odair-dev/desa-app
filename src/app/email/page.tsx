@@ -3,47 +3,30 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Logotipo from "../../img/Logo.png";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import { GlobalContext } from "@/providers/GlobalContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@/providers/UserContext";
+import { ScheduleContext } from "@/providers/ScheduleContext";
 
 export default function Email() {
   const { register, handleSubmit, reset } = useForm();
   const { setModalMobile } = useContext(GlobalContext);
   const { user } = useContext(UserContext);
+  const { sendEmail } = useContext(ScheduleContext);
   const router = useRouter();
 
-  function handleSend(data: any) {
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      message: data.text,
-    };
-    emailjs
-      .send(
-        "service_271lw37",
-        "template_srqdu8u",
-        templateParams,
-        "ienNLETQKSSgbJrN8"
-      )
-      .then(
-        (response) => {
-          toast.success("E-mail enviado com sucesso.");
-          // console.log("Email enviado", response.status, response.text);
-          reset({ name: "", email: "", text: "" });
-          setModalMobile(false);
-          setTimeout(() => {
-            router.push("/");
-          }, 2750);
-        },
-        (err) => {
-          toast.error("Falha ao enviar o e-mail, tente mais tarde!");
-          // console.log("Erro: ", err);
-        }
-      );
+  async function handleSend(data: any) {
+    const response = await sendEmail(data);
+    if (response) {
+      toast.success("E-mail enviado com sucesso.");
+      reset({ name: "", email: "", text: "" });
+      setModalMobile(false);
+      router.push("/");
+    } else {
+      toast.error("Falha no envio, tente novamente");
+    }
   }
 
   function goBack() {

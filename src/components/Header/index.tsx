@@ -30,7 +30,6 @@ export default function Header() {
 
   return (
     <div className={!modalMobile ? styles.container : styles.container2}>
-      {/* <ToastContainer position="top-right" autoClose={1250} /> */}
       <div className={styles.maxSize}>
         <div className={styles.divLogo}>
           <Image
@@ -48,7 +47,6 @@ export default function Header() {
             setModalMobile(false);
             getMySchedule();
           }}
-          // href={`/myschedules`}
           href={`#`}
           className={
             modalMobile && modalSchedules
@@ -72,7 +70,6 @@ export default function Header() {
         >
           Novo Agendamento
         </Link>
-        {/* <div className={!modalMobile ? styles.divLine : styles.divLine1}></div> */}
         <Link
           href={`/email/`}
           className={

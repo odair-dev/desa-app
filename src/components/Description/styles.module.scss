@@ -10,18 +10,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        // border: 2px solid orangered;
         .divText{
-            margin-top: 20rem;
-            margin-bottom: 20rem;
+            margin-top: 100px;
+            margin-bottom: 10px;
             width: 100%;
             border-left: 5px solid rgb(30, 50, 80);
             border-radius: 4px;
             overflow: hidden;
             h2{
-                margin: 0 0 0 6rem;
+                margin: 0 0 0 6px;
                 color: rgb(30, 50, 80);
-                font-weight: 200;
+                font-weight: 400;
+                font-size: 24rem;
             }
         }
         .divImg{
@@ -32,14 +32,12 @@
             align-items: center;
             gap: 8rem;
             overflow: hidden;
-            // border: 1px solid red;
             position: relative;
             .imgCarrousel1{
                 height: 40vw;
                 width: 67vw;     
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 1;
                 right: 217vw;
             }
             .imgCarrousel2{
@@ -47,7 +45,6 @@
                 width: 67vw;    
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 1;
                 right: 150vw;
                 transition: 1s ease-in-out;
             }
@@ -56,7 +53,6 @@
                 width: 67vw;     
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 1;
                 right: 83vw;
                 transition: 1s ease-in-out;
             }
@@ -65,7 +61,6 @@
                 width: 67vw;     
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 2;
                 right: 15vw;
                 transition: 1s ease-in-out;
             }
@@ -74,7 +69,6 @@
                 width: 67vw;     
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 1;
                 right: -53vw;
                 transition: 1s ease-in-out;
             }
@@ -83,7 +77,6 @@
                 width: 67vw;     
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 1;
                 right: -120vw;
                 transition: 1s ease-in-out;
             }
@@ -92,7 +85,6 @@
                 width: 67vw;     
                 margin: 16rem 0;
                 position: absolute;
-                // z-index: 1;
                 right: -187vw;
             }
             .btnRight{
@@ -150,9 +142,7 @@
                 max-width: 400px;
                 height: 500px;
                 display: none;
-                // border: 1px solid blue;
                 p{
-                    // margin: 20rem 0 0 60rem;
                     font-size: 20rem;
                     font-weight: 200;
                     color: rgb(30, 50, 80);
@@ -168,7 +158,6 @@
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
-                // border: 1px solid blue;
                 .imgPlanta{
                     max-height: 95%;
                 }
@@ -207,4 +196,3 @@
         padding-left: 16rem;
     }
 }
-
