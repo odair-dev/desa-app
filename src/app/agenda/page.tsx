@@ -20,7 +20,7 @@ export default function Agenda() {
   const { date, setDate, setFree } = useContext(ScheduleContext);
   const { user } = useContext(UserContext);
   const router = useRouter();
-  let dateSistem = new Date();
+  let dateSistem = new Date(new Date().toDateString());
   if (dateSistem.getDay() == 0 || dateSistem.getDay() == 6) {
     dateSistem.setDate(dateSistem.getDate() + 1);
   }
@@ -66,7 +66,7 @@ export default function Agenda() {
         <>
           <div className={styles.divLogo}>
             <div className={styles.btnGoBack} onClick={() => goBack()}>
-              Voltar
+              <i className="fa-solid fa-house"></i>
             </div>
             <Image
               src={Logotipo}

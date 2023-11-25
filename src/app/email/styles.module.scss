@@ -35,18 +35,18 @@
             border-radius: 14rem 14rem 0 0;
             position: relative;
             .btnGoBack{
+                padding: 4px 5px;
+                border-radius: 6px;
+                border: 1px solid rgb(30, 50, 80);
                 color: white;
-                align-self: flex-start;
-                justify-self: flex-start;
-                text-decoration: underline;
                 position: absolute;
                 left: 8rem;
                 top: 8rem;
                 font-size: 14rem;
                 cursor: pointer;
-            }
-            .btnGoBack:hover{
-                color: orange;
+                &:hover{
+                    border: 1px solid white;
+                }
             }
             .imgLogo{
                 height: 100rem;

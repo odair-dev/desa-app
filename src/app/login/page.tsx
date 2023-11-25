@@ -52,7 +52,7 @@ export default function Login() {
       <form className={styles.formLogin} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.divLogo}>
           <div className={styles.btnGoBack} onClick={() => goBack()}>
-            Voltar
+            <i className="fa-solid fa-house"></i>
           </div>
           <Image
             src={Logotipo}
@@ -87,6 +87,25 @@ export default function Login() {
         <button className={styles.btnLogin} type="submit">
           LOGIN
         </button>
+        <div className={styles.options}>
+          <p
+            className={styles.newPassword}
+            onClick={() => router.push("/user/recover")}
+          >
+            Esqueceu a senha?
+          </p>
+          <div className={styles.or}>
+            <div></div>
+            <p>ou</p>
+            <div></div>
+          </div>
+          <p
+            className={styles.register}
+            onClick={() => router.push("/registro")}
+          >
+            Criar nova conta
+          </p>
+        </div>
       </form>
     </div>
   );

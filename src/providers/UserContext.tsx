@@ -21,6 +21,8 @@ export interface IUserContext {
   updateUser: (data: IRegisterUser, id: string) => Promise<boolean>;
   userToUpdate: any;
   setUserToUpdate: Dispatch<any>;
+  removeUser: (id: string) => Promise<boolean>;
+  recoverPassword: (data: any) => Promise<boolean>;
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -150,9 +152,29 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     }
   }
 
+  async function removeUser(id: string) {
+    try {
+      const response = await api.delete(`/users/${id}`);
+      return true;
+    } catch (error) {
+      console.log("Não foi possível realizar esta operação. \n", error);
+      return false;
+    }
+  }
+
+  async function recoverPassword(data: any): Promise<boolean> {
+    try {
+      await api.post("/users/reset", { ...data });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
+        recoverPassword,
         signIn,
         user,
         setUser,
@@ -163,6 +185,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
         updateUser,
         userToUpdate,
         setUserToUpdate,
+        removeUser,
       }}
     >
       {children}

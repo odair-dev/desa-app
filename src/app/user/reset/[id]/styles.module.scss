@@ -1,0 +1,115 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .bkgFamily{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        z-index: 1;
+    }
+    .divBlue{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(30, 50, 80, 0.55);
+        position: absolute;
+        z-index: 2;
+        .containerLogo{
+            width: 110px;
+            height: 110px;
+            margin: 40px;
+            // border: 1px solid red;
+            .logotipo{
+                width: 95%;
+                height: 95%;
+                object-fit: contain;
+                cursor: pointer;
+            }
+        }
+        .modal{
+            width: 450px;
+            max-width: 94%;
+            min-width: 300px;
+            // height: 300px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.3);
+            .divLogo{
+                border: 1px solid white;
+                width: 100%;
+                height: 60px;
+                border-radius: 16px 16px 0 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 16px;
+                .divText{
+                    width: 100%;
+                    height: 100%;
+                    // border: 1px solid orange;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .pTitle{
+                        color: white;
+                        font-size: 20rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                border: 1px solid white;
+                margin-top: 16px;
+                padding: 16px;
+                border-radius: 0 0 16px 16px;
+                label{
+                    color: #F5F5F5;
+                    font-weight: 600;
+                    // margin-bottom: 8px;
+                    // font-size: 20px;
+                }
+                .inpPassword{
+                    border: 1px solid white;
+                    background-color: transparent;
+                    color: white;
+                    border-radius: 8px;
+                    height: 40px;
+                    padding: 8px;
+                    margin-top: 16px;
+                }
+                .redText{
+                    font-size: 12rem;
+                    font-weight: 400;
+                    color: red;
+                }
+                button{
+                    height: 40px;
+                    border-radius: 8px;
+                    font-size: 18rem;
+                    font-weight: 600;
+                    border: none;
+                    background-color: rgb(70, 130, 70);
+                    color: #F5F5F5;
+                    margin-top: 16px;
+                    &:hover{
+                        background-color: rgb(60, 120, 60);
+                    }
+                }
+            }
+            h1{
+                color: white;
+            }
+        }
+    }
+}

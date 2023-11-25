@@ -34,15 +34,12 @@ export default function Schedules() {
     setFree2(free);
   }, [free]);
 
-  useEffect(() => {
-    console.log(free2);
-  }, [free2]);
+  // useEffect(() => {
+  //   console.log(free2);
+  // }, [free2]);
 
   async function refresh() {
     setReloading(true);
-    console.log(date);
-    console.log("Data informada: ", date.toISOString().slice(0, 10));
-    console.log("Data sistema: ", new Date().toISOString().slice(0, 10));
     schedules.map(async (i) => {
       await getSchedule(date.toISOString().slice(0, 10), i);
     });
@@ -82,6 +79,9 @@ export default function Schedules() {
       ) : (
         <form className={styles.formSchedules}>
           <div className={styles.divLogo}>
+            <div className={styles.btnGoBack} onClick={() => goBack()}>
+              <i className="fa-solid fa-house"></i>
+            </div>
             <Image
               src={Logotipo}
               alt="Logotipo"
@@ -92,19 +92,21 @@ export default function Schedules() {
             <p>{date.toLocaleDateString()}</p>
           </div>
           <div className={styles.divHourOn}>
-            <p>Escolha um horário:</p>
+            {free2 ? <p>Escolha um horário:</p> : null}
             <div className={styles.divSchedules}>
-              {free2 != null
-                ? free2.map((hour: string) => (
-                    <div
-                      className={styles.cardSchedule}
-                      key={hour}
-                      onClick={() => handleTime(hour)}
-                    >
-                      <p className={styles.pHour}>{hour}</p>
-                    </div>
-                  ))
-                : null}
+              {free2 != null ? (
+                free2.map((hour: string) => (
+                  <div
+                    className={styles.cardSchedule}
+                    key={hour}
+                    onClick={() => handleTime(hour)}
+                  >
+                    <p className={styles.pHour}>{hour}</p>
+                  </div>
+                ))
+              ) : (
+                <h4>Infelizmente esta data não possui mais horários.</h4>
+              )}
             </div>
           </div>
         </form>

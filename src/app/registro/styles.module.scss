@@ -16,19 +16,17 @@
         width: 96%;
         max-width: 400px;
         height: fit-content;
-        max-height: 96%;
         background-color: white;
         position: absolute;
         border-radius: 16rem;
         box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.3);
         display: flex;
         flex-direction: column;
-        padding: 20rem;
+        padding: 10px;
         .divLogo{
-            height: 100rem;
+            height: 80px;
             width: 100%;
             background-color: rgb(30, 50, 80);
-            margin-bottom: 10rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,18 +34,18 @@
             border-radius: 14rem 14rem 0 0;
             position: relative;
             .btnGoBack{
+                padding: 4px 5px;
+                border-radius: 6px;
+                border: 1px solid rgb(30, 50, 80);
                 color: white;
-                align-self: flex-start;
-                justify-self: flex-start;
-                text-decoration: underline;
                 position: absolute;
                 left: 8rem;
                 top: 8rem;
                 font-size: 14rem;
                 cursor: pointer;
-            }
-            .btnGoBack:hover{
-                color: orange;
+                &:hover{
+                    border: 1px solid white;
+                }
             }
             .imgLogo{
                 height: 100rem;
@@ -56,30 +54,51 @@
             }
         }
         .lblLogin{
-            margin: 8rem 0;
+            font-size: 14rem;
+            font-weight: 500;
+            margin: 4px 0 0 0;
             color: rgb(30, 50, 80);
         }
         .inpLogin{
-            height: 40rem;
-            border: 1px solid rgb(30, 50, 80);
-            border-radius: 8rem;
-            padding: 12rem;
+            height: 40px;
+            border: 1px solid gray;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .redText{
+            font-size: 10rem;
+            font-weight: 500;
+            color: red;
         }
         .btnLogin{
             height: 40rem;
             width: 100%;
-            margin-top: 20rem;
+            margin-top: 8px;
             align-self: flex-end;
             border-radius: 8rem;
-            background-color: #1e3250;
-            border: 1px solid #1e3250;
+            background-color: rgb(70, 130, 70);
+            border: 1px solid rgb(70, 130, 70);
             color: #ffffff;
             font-weight: 600;
             transition: 0.5s;   
+            &:hover{
+                background-color: rgb(100, 200, 100);
+                border: 1px solid rgb(100, 200, 100);
+            }
         }
-        .btnLogin:hover{
-            background-color: #229A00;
-            border: 1px solid #229A00;
+        .options{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0 0 0;
+            gap: 2px;
+            color: rgb(30, 50, 80);
+            .login{
+                cursor: pointer;
+                &:hover{
+                    color: rgb(200, 100, 100);
+                }
+            }
         }
     }
 }

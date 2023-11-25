@@ -19,7 +19,9 @@ export default function Agenda() {
   }
 
   function deleteVisible(date: string, schedule: string) {
-    if (date == new Date().toISOString().slice(0, 10)) {
+    if (
+      date == new Date(new Date().toDateString()).toISOString().slice(0, 10)
+    ) {
       let addOneHour = new Date().getTime() + 60 * 60 * 1000;
       let newTime = new Date(addOneHour);
       let hour = newTime.getHours();
@@ -69,10 +71,6 @@ export default function Agenda() {
 
   return (
     <div className={styles.container}>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      />
       <div className={styles.divLogo}>
         <Image
           src={Logotipo}
@@ -85,13 +83,16 @@ export default function Agenda() {
       <h2>Meus agendamentos</h2>
       <div className={styles.divBtn}>
         <div className={styles.btn} onClick={() => goBack()}>
-          Home
+          <i className="fa-solid fa-house"></i>
+          <p>Home</p>
         </div>
         <div className={styles.btn} onClick={() => router.push("/agenda")}>
-          Agendar
+          <i className="fa-solid fa-calendar-days"></i>
+          <p>Agendar</p>
         </div>
         <div className={styles.btn} onClick={() => refresh()}>
-          Atualizar
+          <i className="fa-solid fa-rotate"></i>
+          <p>Atualizar</p>
         </div>
       </div>
       {reloading ? (

@@ -5,6 +5,23 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(30, 50, 80);
+    position: relative;
+    margin-top: 20px;
+    .btnVisit{
+        position: absolute;
+        top: -23px;
+        padding: 14px 30px;
+        border-radius: 32px;
+        border: none;
+        background-color: rgb(70, 130, 70);
+        color: #F5F5F5;
+        font-weight: 600;
+        transition: 0.5s;
+        &:hover{
+            padding: 14px 38px;
+            background-color: rgb(50, 100, 50);
+        }
+    }
     .maxSize{
         width: 98%;
         max-width: 1200px;
@@ -41,11 +58,11 @@
             justify-content: flex-start;
             align-items: center;
             flex-direction: column;
-            h3{
+            .h3Social{
                 font-size: 24rem;
                 color: white;
                 font-weight: 600;
-                margin: 60rem 0 8rem 0;
+                margin: 60px 0 8px 0;
             }
             .divIcons{
                 height: 40px;
@@ -82,7 +99,7 @@
                 h2{
                     color: white;
                     font-weight: 600;
-                    margin: 60rem 0 16rem 0;
+                    margin: 60px 0 16rem 0;
                 }
                 a{
                     font-size: 16rem;

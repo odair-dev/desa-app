@@ -22,6 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        />
         <ToastContainer position="bottom-right" autoClose={2000} />
         <GlobalProvider>
           <UserProvider>

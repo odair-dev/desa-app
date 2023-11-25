@@ -4,6 +4,7 @@ import Logotipo from "../../img/Logo_sem_sombra.png";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -11,8 +12,15 @@ const montserrat = Montserrat({
 });
 
 export default function Footer() {
+  const router = useRouter();
   return (
     <div className={styles.container}>
+      <button
+        className={styles.btnVisit}
+        onClick={() => router.push("/agenda")}
+      >
+        Agendar Visita
+      </button>
       <div className={styles.maxSize}>
         <a className={styles.logo} href="#home">
           <Image
@@ -24,7 +32,9 @@ export default function Footer() {
           <p>CNPJ: 29.015.972/0001-31</p>
         </a>
         <div className={styles.info}>
-          <h3 className={montserrat.className}>Redes Sociais</h3>
+          <h3 className={`${montserrat.className} ${styles.h3Social}`}>
+            Redes Sociais
+          </h3>
           <div className={styles.divIcons}>
             <a
               href="https://www.facebook.com/desaincorporadora/"

@@ -40,19 +40,19 @@
             border-radius: 14rem 14rem 0 0;
             position: relative;
             .btnGoBack{
+                padding: 4px 5px;
+                border-radius: 6px;
+                border: 1px solid rgb(30, 50, 80);
                 color: white;
-                align-self: flex-start;
-                justify-self: flex-start;
-                text-decoration: underline;
                 position: absolute;
                 left: 8rem;
                 top: 8rem;
                 font-size: 14rem;
                 cursor: pointer;
-            }
-            .btnGoBack:hover{
-                color: orange;
-            }
+                &:hover{
+                    border: 1px solid white;
+                }
+            } 
             .imgLogo{
                 height: 100rem;
                 width: 100rem;
@@ -98,6 +98,14 @@
                         font-weight: 600;
                         color: rgb(30, 50, 80);
                     }
+                }
+                h4{
+                    max-width: 300px;
+                    margin-top: 20px;
+                    padding: 16px 8px;
+                    background-color: rgb(150, 30, 70);
+                    color: white;
+                    border-radius: 8px;
                 }
             }
         }

@@ -44,7 +44,7 @@ export default function Email() {
       <form className={styles.formEmail} onSubmit={handleSubmit(handleSend)}>
         <div className={styles.divLogo}>
           <div className={styles.btnGoBack} onClick={() => goBack()}>
-            Voltar
+            <i className="fa-solid fa-house"></i>
           </div>
           <Image
             src={Logotipo}

@@ -71,7 +71,7 @@ export interface IDefaultProviderProps {
 
 export function ScheduleProvider({ children }: IDefaultProviderProps) {
   const [confirmSchedule, setConfirmSchedule] = useState(false);
-  let dateSistem = new Date();
+  let dateSistem = new Date(new Date().toDateString());
   if (dateSistem.getDay() == 0 || dateSistem.getDay() == 6) {
     dateSistem.setDate(dateSistem.getDate() + 1);
   }
@@ -111,8 +111,9 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
 
   async function getSchedule(date: string, schedule: string) {
     try {
-      if (date == new Date().toISOString().slice(0, 10)) {
-        console.log("IF - Escolheu data de hoje");
+      if (
+        date == new Date(new Date().toDateString()).toISOString().slice(0, 10)
+      ) {
         let addOneHour = new Date().getTime() + 60 * 60 * 1000;
         let newTime = new Date(addOneHour);
         let hour = newTime.getHours();
@@ -131,7 +132,7 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
             setFree(schedulesFree.sort());
           }
         } else {
-          console.log("Horário vencido: ", schedule);
+          // console.log("Horário vencido: ", schedule);
         }
       } else {
         const response = await api.post(`/schedules/free/schedules`, {
@@ -141,9 +142,9 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
         if (response.data.free_time_schedule) {
           schedulesFree.push(schedule);
           setFree(schedulesFree.sort());
-          console.log("Livre: ", schedule);
+          // console.log("Livre: ", schedule);
         } else {
-          console.log("Ocupado: ", schedule);
+          // console.log("Ocupado: ", schedule);
         }
       }
     } catch (error) {
