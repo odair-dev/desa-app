@@ -7,7 +7,6 @@ import { ScheduleContext } from "@/providers/ScheduleContext";
 import Image from "next/image";
 import Logotipo from "../../img/Logo.png";
 import { toast } from "react-toastify";
-import NewHome from "../../img/novo-apartamento.jpg";
 
 export default function Agenda() {
   const router = useRouter();
@@ -71,105 +70,96 @@ export default function Agenda() {
   }, []);
 
   return (
-    <div className={styles.divBackground}>
-      <Image
-        className={styles.newHome}
-        src={NewHome}
-        alt="Apartamento Novo"
-        height={2000}
-        width={2000}
-      />
-      <div className={styles.container}>
-        <div className={styles.divLogo}>
-          <Image
-            src={Logotipo}
-            alt="Logotipo"
-            className={styles.imgLogo}
-            onClick={() => goBack()}
-            priority={true}
-          />
+    <div className={styles.container}>
+      <div className={styles.divLogo}>
+        <Image
+          src={Logotipo}
+          alt="Logotipo"
+          className={styles.imgLogo}
+          onClick={() => goBack()}
+          priority={true}
+        />
+      </div>
+      <h2>Meus agendamentos</h2>
+      <div className={styles.divBtn}>
+        <div className={styles.btn} onClick={() => goBack()}>
+          <i className="fa-solid fa-house"></i>
+          <p>Home</p>
         </div>
-        <h2>Meus agendamentos</h2>
-        <div className={styles.divBtn}>
-          <div className={styles.btn} onClick={() => goBack()}>
-            <i className="fa-solid fa-house"></i>
-            <p>Home</p>
-          </div>
-          <div className={styles.btn} onClick={() => router.push("/agenda")}>
-            <i className="fa-solid fa-calendar-days"></i>
-            <p>Agendar</p>
-          </div>
-          <div className={styles.btn} onClick={() => refresh()}>
-            <i className="fa-solid fa-rotate"></i>
-            <p>Atualizar</p>
-          </div>
+        <div className={styles.btn} onClick={() => router.push("/agenda")}>
+          <i className="fa-solid fa-calendar-days"></i>
+          <p>Agendar</p>
         </div>
-        {reloading ? (
-          <div className={styles2.loading}>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        ) : (
-          <div className={styles.allSchedules}>
-            {mySchedules != null ? (
-              mySchedules.map((i) => (
-                <div className={styles.card} key={i.id}>
-                  <h3 className={styles.pName}>
-                    {i.property.name}{" "}
-                    <span onClick={() => removeOneSchedule(i.id)}>
-                      {deleteVisible(
-                        `${new Date(
-                          Date.parse(i.date.toString().slice(0, 10))
-                        ).getFullYear()}-${
-                          new Date(
-                            Date.parse(i.date.toString().slice(0, 10))
-                          ).getMonth() + 1
-                        }-${new Date(
-                          Date.parse(i.date.toString().slice(0, 10))
-                        ).getDate()}`,
-                        i.hour
-                      ) ? (
-                        <i className="fa-regular fa-trash-can"></i>
-                      ) : null}
-                    </span>
-                  </h3>
-                  <div className={styles.divDateTime}>
-                    <p className={styles.pDay}>
-                      {`${new Date(
+        <div className={styles.btn} onClick={() => refresh()}>
+          <i className="fa-solid fa-rotate"></i>
+          <p>Atualizar</p>
+        </div>
+      </div>
+      {reloading ? (
+        <div className={styles2.loading}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      ) : (
+        <div className={styles.allSchedules}>
+          {mySchedules != null ? (
+            mySchedules.map((i) => (
+              <div className={styles.card} key={i.id}>
+                <h3 className={styles.pName}>
+                  {i.property.name}{" "}
+                  <span onClick={() => removeOneSchedule(i.id)}>
+                    {deleteVisible(
+                      `${new Date(
                         Date.parse(i.date.toString().slice(0, 10))
-                      ).getDate()}/${
+                      ).getFullYear()}-${
                         new Date(
                           Date.parse(i.date.toString().slice(0, 10))
                         ).getMonth() + 1
-                      }/${new Date(
+                      }-${new Date(
                         Date.parse(i.date.toString().slice(0, 10))
-                      ).getFullYear()}`}
-                    </p>
-                    <p className={styles.pHour}>{i.hour}</p>
-                  </div>
-                  <div className={styles.divNameUser}>
-                    <p>{i.user.name}</p>
-                  </div>
-                  <div className={styles.divDefault}>
-                    <p>Telefone: {i.user.phone}</p>
-                  </div>
-                  <div className={styles.divDefault}>
-                    <p>{i.user.email}</p>
-                  </div>
-                  <div className={styles.divObservation}>
-                    <p>Obs.: {i.observation}</p>
-                  </div>
+                      ).getDate()}`,
+                      i.hour
+                    ) ? (
+                      <i className="fa-regular fa-trash-can"></i>
+                    ) : null}
+                  </span>
+                </h3>
+                <div className={styles.divDateTime}>
+                  <p className={styles.pDay}>
+                    {`${new Date(
+                      Date.parse(i.date.toString().slice(0, 10))
+                    ).getDate()}/${
+                      new Date(
+                        Date.parse(i.date.toString().slice(0, 10))
+                      ).getMonth() + 1
+                    }/${new Date(
+                      Date.parse(i.date.toString().slice(0, 10))
+                    ).getFullYear()}`}
+                  </p>
+                  <p className={styles.pHour}>{i.hour}</p>
                 </div>
-              ))
-            ) : (
-              <div className={styles.card}>
-                <p className={styles.pName}>Nenhum agendamento encontrado</p>
+                <div className={styles.divNameUser}>
+                  <p>{i.user.name}</p>
+                </div>
+                <div className={styles.divDefault}>
+                  <p>Telefone: {i.user.phone}</p>
+                </div>
+                <div className={styles.divDefault}>
+                  <p>{i.user.email}</p>
+                </div>
+                <div className={styles.divObservation}>
+                  <p>Obs.: {i.observation}</p>
+                </div>
               </div>
-            )}
-          </div>
-        )}
-      </div>
+            ))
+          ) : (
+            <div className={styles.card}>
+              <p className={styles.pName}>Nenhum agendamento encontrado</p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
