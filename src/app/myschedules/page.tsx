@@ -13,6 +13,8 @@ export default function Agenda() {
   const { mySchedules, getMySchedule, removeSchedule } =
     useContext(ScheduleContext);
   const [reloading, setReloading] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const [idToDelete, setIdToDelete] = useState<string | null>(null);
 
   function goBack() {
     router.push("/");
@@ -51,16 +53,25 @@ export default function Agenda() {
     }
   }
 
+  function deleteSchedule(id: string) {
+    setIdToDelete(id);
+    setModalDelete(true);
+  }
+
   async function removeOneSchedule(id: string) {
     setReloading(true);
     const deleteSchedule = await removeSchedule(id);
     if (deleteSchedule) {
       setReloading(false);
       toast.success("Agendamento removido com sucesso");
+      setIdToDelete(null);
+      setModalDelete(false);
       refresh();
     } else {
       setReloading(false);
       toast.error("Falha ao remover o agendamento");
+      setIdToDelete(null);
+      setModalDelete(false);
     }
   }
 
@@ -71,6 +82,29 @@ export default function Agenda() {
 
   return (
     <div className={styles.container}>
+      {modalDelete ? (
+        <div className={styles.modalDelete}>
+          <div className={styles.askDelete}>
+            <h3 className={styles.titleDelete}>
+              Deseja realmente excluir este agendamento?
+            </h3>
+            <div className={styles.divBtns}>
+              <button
+                className={styles.btnDelete}
+                onClick={() => removeOneSchedule(idToDelete!)}
+              >
+                Excluir
+              </button>
+              <button
+                className={styles.btnCancel}
+                onClick={() => setModalDelete(false)}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className={styles.divLogo}>
         <Image
           src={Logotipo}
@@ -108,7 +142,7 @@ export default function Agenda() {
               <div className={styles.card} key={i.id}>
                 <h3 className={styles.pName}>
                   {i.property.name}{" "}
-                  <span onClick={() => removeOneSchedule(i.id)}>
+                  <span onClick={() => deleteSchedule(i.id)}>
                     {deleteVisible(
                       `${new Date(
                         Date.parse(i.date.toString().slice(0, 10))
