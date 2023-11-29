@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/services/api";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 interface IGlobalProviderProps {
@@ -44,6 +44,7 @@ interface IGlobalContext {
   setModalRemove: React.Dispatch<React.SetStateAction<boolean>>;
   propertyRemove: string | null;
   setPropertyRemove: React.Dispatch<React.SetStateAction<string | null>>;
+  validProperty: IProperties[] | null;
 }
 
 export const GlobalContext = createContext({} as IGlobalContext);
@@ -52,11 +53,15 @@ export function GlobalProvider({ children }: IGlobalProviderProps) {
   const [modalMobile, setModalMobile] = useState<boolean>(false);
   const [modalSchedules, setModalSchedules] = useState<boolean>(false);
   const [property, setProperty] = useState<IProperties | null>(null);
+  const [validProperty, setValidProperty] = useState<IProperties[] | null>(
+    null
+  );
   const [modalEdit, setModalEdit] = useState<boolean>(false);
   const [modalRegister, setModalRegister] = useState<boolean>(false);
   const [modalRemove, setModalRemove] = useState<boolean>(false);
   const [propertyRemove, setPropertyRemove] = useState<string | null>(null);
   const [properties, setProperties] = useState<IProperties[] | null>(null);
+  // const [idProperty, setIdProperty] = useState<string | null>(null);
 
   async function getProperties() {
     try {
@@ -69,9 +74,24 @@ export function GlobalProvider({ children }: IGlobalProviderProps) {
     }
   }
 
+  useEffect(() => {
+    if (properties != null) {
+      let justValid: IProperties[] = [];
+      properties.map((i) => {
+        if (i.available) {
+          justValid.push(i);
+        }
+      });
+      if (justValid.length > 0) {
+        setValidProperty(justValid);
+      }
+    }
+  }, [properties]);
+
   return (
     <GlobalContext.Provider
       value={{
+        validProperty,
         propertyRemove,
         setPropertyRemove,
         modalRemove,

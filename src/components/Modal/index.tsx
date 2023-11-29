@@ -25,11 +25,18 @@ type Inputs = {
 };
 
 export default function Modal() {
-  const { date, hour, setConfirmSchedule, createSchedule, getMySchedule } =
-    useContext(ScheduleContext);
+  const {
+    date,
+    hour,
+    setConfirmSchedule,
+    createSchedule,
+    getMySchedule,
+    idProperty,
+  } = useContext(ScheduleContext);
   const { user } = useContext(UserContext);
-  const { setModalMobile } = useContext(GlobalContext);
+  const { setModalMobile, validProperty } = useContext(GlobalContext);
   const router = useRouter();
+  const nameProperty = validProperty?.find((i) => i.id == idProperty);
 
   const {
     register,
@@ -39,23 +46,28 @@ export default function Modal() {
   } = useForm<Inputs>();
 
   async function onSubmit(data: any) {
-    const id = "e6a107a7-1143-41d2-ba1e-625f2da7875a";
-    const dataFormated = {
-      ...data,
-      hour,
-      date: date.toISOString().slice(0, 10),
-    };
-    const statusOk = await createSchedule(dataFormated, id);
-    if (statusOk) {
-      toast.success("Agendamento realizado com sucesso");
-      setModalMobile(false);
-      setConfirmSchedule(false);
-      getMySchedule();
+    if (idProperty) {
+      const dataFormated = {
+        ...data,
+        hour,
+        date: date.toISOString().slice(0, 10),
+      };
+      const statusOk = await createSchedule(dataFormated, idProperty);
+      if (statusOk) {
+        toast.success("Agendamento realizado com sucesso");
+        setModalMobile(false);
+        setConfirmSchedule(false);
+        getMySchedule();
+      } else {
+        toast.error(
+          "Falha ao agendar, verifique se há um conflito na sua agenda ou tente novamente mais tarde."
+        );
+        setModalMobile(false);
+        setConfirmSchedule(false);
+        router.push("/myschedules");
+      }
     } else {
-      toast.error("Falha ao agendar, tente novamente.");
-      setModalMobile(false);
-      setConfirmSchedule(false);
-      router.push("/");
+      toast.error("O imóvel não foi escolhido");
     }
   }
 
@@ -68,7 +80,7 @@ export default function Modal() {
         <form className={styles.formSchedule} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.divName}>
             <p className={`${styles.pName} ${raleway.className}`}>
-              Residencial Lisboa
+              {nameProperty?.name}
             </p>
           </div>
           {user ? (

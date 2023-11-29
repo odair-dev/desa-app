@@ -61,6 +61,8 @@ export interface IScheduleContext {
   setMySchedules: Dispatch<SetStateAction<IFullSchedule[] | null>>;
   removeSchedule: (id: string) => Promise<boolean>;
   sendEmail: (date: ISendEmail) => Promise<boolean>;
+  idProperty: string | null;
+  setIdProperty: Dispatch<SetStateAction<string | null>>;
 }
 
 export const ScheduleContext = createContext({} as IScheduleContext);
@@ -81,6 +83,7 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
   const [free, setFree] = useState<string[] | null>(null);
   const [mySchedules, setMySchedules] = useState<IFullSchedule[] | null>(null);
   const schedulesFree: string[] = [];
+  const [idProperty, setIdProperty] = useState<string | null>(null);
   const router = useRouter();
   const schedules = [
     "08:00",
@@ -126,6 +129,7 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
           const response = await api.post(`/schedules/free/schedules`, {
             date,
             schedule,
+            property_id: idProperty,
           });
           if (response.data.free_time_schedule) {
             schedulesFree.push(schedule);
@@ -138,6 +142,7 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
         const response = await api.post(`/schedules/free/schedules`, {
           date,
           schedule,
+          property_id: idProperty,
         });
         if (response.data.free_time_schedule) {
           schedulesFree.push(schedule);
@@ -219,6 +224,8 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
   return (
     <ScheduleContext.Provider
       value={{
+        idProperty,
+        setIdProperty,
         sendEmail,
         removeSchedule,
         getSchedule,
