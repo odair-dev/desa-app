@@ -70,14 +70,30 @@ export default function Header() {
         >
           Novo Agendamento
         </Link>
-        <Link
-          href={`/email/`}
-          className={
-            modalMobile && !modalSchedules ? styles.textMenu3 : styles.textMenu
-          }
-        >
-          Contato
-        </Link>
+        {user?.type == "admin" ? (
+          <Link
+            href={`/properties`}
+            className={
+              modalMobile && !modalSchedules
+                ? styles.textMenu3
+                : styles.textMenu
+            }
+          >
+            Imóveis
+          </Link>
+        ) : (
+          <Link
+            href={`/email/`}
+            className={
+              modalMobile && !modalSchedules
+                ? styles.textMenu3
+                : styles.textMenu
+            }
+          >
+            Contato
+          </Link>
+        )}
+
         {!user ? (
           <>
             <Link
