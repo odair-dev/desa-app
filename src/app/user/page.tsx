@@ -142,7 +142,7 @@ export default function User() {
           Celular:
         </label>
         <input
-          type="tel"
+          type="number"
           id="inpPhone"
           className={styles.inpLogin}
           defaultValue={user?.phone}

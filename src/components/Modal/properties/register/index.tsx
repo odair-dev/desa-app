@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { parseCookies } from "nookies";
 import { toast } from "react-toastify";
 import { api } from "@/services/api";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
 
 const addressSchema = z.object({
@@ -104,9 +104,34 @@ export default function ModalRegisterProperty() {
     });
   }
 
+  const modalRef = useRef<any>(null);
+  useEffect(() => {
+    const handleOutclick = (event: { target: any }) => {
+      if (!modalRef.current?.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("mousedown", handleOutclick);
+
+    const handleKeyDown = (event: any) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleOutclick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.modal}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form ref={modalRef} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.divTitle}>
           <h3>Cadastro de imóvel</h3>
           <p onClick={() => closeModal()}>x</p>

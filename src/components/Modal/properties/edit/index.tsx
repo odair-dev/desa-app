@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
 import { parseCookies } from "nookies";
 import { api } from "@/services/api";
@@ -86,9 +86,34 @@ export function ModalEditProperty() {
     setProperty(null);
   }
 
+  const modalRef = useRef<any>(null);
+  useEffect(() => {
+    const handleOutclick = (event: { target: any }) => {
+      if (!modalRef.current?.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("mousedown", handleOutclick);
+
+    const handleKeyDown = (event: any) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleOutclick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.modal}>
-      <form onSubmit={handleSubmit(onEdit)}>
+      <form ref={modalRef} onSubmit={handleSubmit(onEdit)}>
         <div className={styles.divTitle}>
           <h3>Editar Imóvel</h3>
           <p onClick={() => closeModal()}>x</p>
@@ -237,7 +262,7 @@ export function ModalEditProperty() {
             ) : null}
           </div>
         </div>
-        <button className={styles.btnSave}>Editar</button>
+        <button className={styles.btnSave}>Salvar</button>
       </form>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import { useForm } from "react-hook-form";
 import { UserContext } from "@/providers/UserContext";
@@ -38,6 +38,31 @@ export default function ModalPassword() {
     }
     reset({ password: "" });
   }
+
+  // const modalRef = useRef<any>(null);
+  // useEffect(() => {
+  //   const handleOutclick = (event: { target: any }) => {
+  //     if (!modalRef.current?.contains(event.target)) {
+  //       setUserToUpdate(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("mousedown", handleOutclick);
+
+  //   const handleKeyDown = (event: any) => {
+  //     if (event.key === "Escape") {
+  //       setUserToUpdate(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("keydown", handleKeyDown);
+
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //     window.removeEventListener("mousedown", handleOutclick);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   if (userToUpdate != null) {
     return (

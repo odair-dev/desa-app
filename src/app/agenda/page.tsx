@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ScheduleContext } from "@/providers/ScheduleContext";
 import { UserContext } from "@/providers/UserContext";
+import Link from "next/link";
 
 export default function Agenda() {
   const [modalProperty, setModalProperty] = useState<boolean>(true);
@@ -67,16 +68,27 @@ export default function Agenda() {
     <>
       {modalProperty ? (
         <div className={styles.selectProperty}>
-          <h2 className={styles.choiceProperty}>Escolha um imóvel</h2>
-          {validProperty?.map((i) => (
-            <div
-              className={styles.cardProperty}
-              key={i.id + 123}
-              onClick={() => defineProperty(i.id)}
-            >
-              {i.name}
+          <h2 className={styles.choiceProperty}>Escolha o imóvel</h2>
+          <Link className={styles.cardHome} href={"/"}>
+            Página Inicial
+          </Link>
+          {validProperty ? (
+            validProperty?.map((i) => (
+              <div
+                className={styles.cardProperty}
+                key={i.id + 123}
+                onClick={() => defineProperty(i.id)}
+              >
+                {i.name}
+              </div>
+            ))
+          ) : (
+            <div className={styles2.loading}>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
-          ))}
+          )}
         </div>
       ) : null}
       <form

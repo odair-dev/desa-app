@@ -2,7 +2,7 @@ import { parseCookies } from "nookies";
 import styles from "./styles.module.scss";
 import { api } from "@/services/api";
 import { toast } from "react-toastify";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
 import { UserContext } from "@/providers/UserContext";
 import { useRouter } from "next/navigation";
@@ -37,10 +37,35 @@ export default function ModalRemoveProperty() {
     }
   }
 
-  function cancelOperation() {
+  function closeModal() {
     setModalRemove(false);
     setPropertyRemove(null);
   }
+
+  const modalRef = useRef<any>(null);
+  useEffect(() => {
+    const handleOutclick = (event: { target: any }) => {
+      if (!modalRef.current?.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("mousedown", handleOutclick);
+
+    const handleKeyDown = (event: any) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleOutclick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.modalDelete}>
@@ -52,10 +77,7 @@ export default function ModalRemoveProperty() {
           <button className={styles.btnDelete} onClick={() => deleteProperty()}>
             Excluir
           </button>
-          <button
-            className={styles.btnCancel}
-            onClick={() => cancelOperation()}
-          >
+          <button className={styles.btnCancel} onClick={() => closeModal()}>
             Cancelar
           </button>
         </div>

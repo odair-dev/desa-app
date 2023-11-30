@@ -23,7 +23,7 @@
         box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.3);
         display: flex;
         flex-direction: column;
-        padding: 16rem;
+        padding: 10px;
         .divLogo{
             width: 100%;
             background-color: rgb(30, 50, 80);
@@ -98,15 +98,15 @@
             margin-top: 20rem;
             align-self: flex-end;
             border-radius: 8rem;
-            background-color: rgb(30, 50, 80);
-            border: 1px solid rgb(30, 50, 80);
+            background-color: rgba(50, 184, 99, 0.7);
+            border: 1px solid rgba(50, 184, 99, 0.7);
             color: white;
             font-weight: 600;
             transition: 0.5s;   
         }
         .btnSend:hover{
-            background-color: #229A00;
-            border: 1px solid #229A00;
+            background-color: rgba(50, 184, 99, 1);
+            border: 1px solid rgba(50, 184, 99, 1);
         }
     }
 }

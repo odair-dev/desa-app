@@ -177,7 +177,19 @@ export default function Agenda() {
                   <p>{i.user.name}</p>
                 </div>
                 <div className={styles.divDefault}>
-                  <p>Telefone: {i.user.phone}</p>
+                  <p>
+                    <a
+                      href={`https://wa.me/${i.user.phone}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa-brands fa-whatsapp"></i>
+                    </a>
+                    {i.user.phone}
+                    <a href={`tel:+${i.user.phone}`}>
+                      <i className="fa-solid fa-phone"></i>
+                    </a>
+                  </p>
                 </div>
                 <div className={styles.divDefault}>
                   <p>{i.user.email}</p>

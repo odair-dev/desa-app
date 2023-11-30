@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import { ScheduleContext } from "@/providers/ScheduleContext";
 import { UserContext } from "@/providers/UserContext";
@@ -71,9 +71,34 @@ export default function Modal() {
     }
   }
 
+  const modalRef = useRef<any>(null);
+  useEffect(() => {
+    const handleOutclick = (event: { target: any }) => {
+      if (!modalRef.current?.contains(event.target)) {
+        setConfirmSchedule(false);
+      }
+    };
+
+    window.addEventListener("mousedown", handleOutclick);
+
+    const handleKeyDown = (event: any) => {
+      if (event.key === "Escape") {
+        setConfirmSchedule(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleOutclick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.container}>
-      <div className={styles.divObservation}>
+      <div ref={modalRef} className={styles.divObservation}>
         <p className={styles.pClose} onClick={() => setConfirmSchedule(false)}>
           x
         </p>

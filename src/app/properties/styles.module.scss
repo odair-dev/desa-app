@@ -71,7 +71,7 @@
       .card{
         width: 96%;
         max-width: 400px;
-        min-height: fit-content;
+        height: fit-content;
         border-radius: 8px;
         background-color: rgb(50, 160, 50);
         display: flex;
@@ -82,12 +82,12 @@
         position: relative;
         .activated{
           position: absolute;
-          top: 16px;
-          right: 16px;
+          top: 0;
+          right: 0;
+          border-radius: 0 8px 0 8px;
           padding: 4px 8px;
           background-color: orangered;
           color: white;
-          border-radius: 4px;
           font-size: 10px;
           font-weight: 900;
         }
@@ -145,7 +145,7 @@
       .cardOff{
         width: 96%;
         max-width: 400px;
-        min-height: fit-content;
+        height: fit-content;
         border-radius: 8px;
         background-color: rgba(0, 0, 0, 0.5);
         display: flex;
@@ -154,25 +154,14 @@
         padding: 16px;
         margin: 16px;
         position: relative;
-        .activated{
-          position: absolute;
-          top: 16px;
-          right: 16px;
-          padding: 4px 8px;
-          background-color: orangered;
-          color: white;
-          border-radius: 4px;
-          font-size: 10px;
-          font-weight: 900;
-        }
         .disabled{
           position: absolute;
-          top: 16px;
-          right: 16px;
+          top: 0;
+          right: 0;
+          border-radius: 0 8px 0 8px;
           padding: 4px 8px;
-          background-color: rgb(30, 50, 80);
+          background-color: rgb(22, 42, 72);
           color: white;
-          border-radius: 4px;
           font-size: 10px;
           font-weight: 900;
         }
