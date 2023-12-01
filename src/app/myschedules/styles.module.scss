@@ -11,7 +11,7 @@
     width: 100%;
     height: fit-content;
     min-height: 100%;
-    background-color: rgb(30, 50, 80);
+    background: linear-gradient(45deg, rgb(30,50,80) 0%, rgb(30,90,140) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,8 +117,8 @@
         transition: 0.5s;
         cursor: pointer;
         &:hover{
-          background-color: rgb(50, 80, 130);
-          border: 1px solid rgb(50, 80, 130);
+          background-color: rgb(70, 120, 150);
+          border: 1px solid rgb(45, 75, 110);
           color: white;
         }
       }
@@ -133,7 +133,7 @@
       flex-wrap: wrap;
       gap: 10px;
       .card{
-        background-color: #E1B941;
+        background-color: #EBC460;
         box-shadow: 4px 3px 4px 1px rgba(0, 0, 0, 0.5);
         padding: 16px;
         width: 100%;
@@ -143,7 +143,7 @@
         align-items: center;
         gap: 8px;
         h3{
-          background-color: rgb(30, 50, 80);
+          background-color: rgb(45, 75, 110);
           color: rgb(245, 245, 245);
           padding: 4px 8px;
           border-radius: 8px;
