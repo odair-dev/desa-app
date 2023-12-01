@@ -21,8 +21,12 @@ export default function Agenda() {
   }
 
   function deleteVisible(date: string, schedule: string) {
+    const formatedDateSchedule = new Date(new Date(date).toDateString())
+      .toISOString()
+      .slice(0, 10);
     if (
-      date == new Date(new Date().toDateString()).toISOString().slice(0, 10)
+      formatedDateSchedule ==
+      new Date(new Date().toDateString()).toISOString().slice(0, 10)
     ) {
       let addOneHour = new Date().getTime() + 60 * 60 * 1000;
       let newTime = new Date(addOneHour);
