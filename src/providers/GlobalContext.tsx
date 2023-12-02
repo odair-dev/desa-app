@@ -45,12 +45,15 @@ interface IGlobalContext {
   propertyRemove: string | null;
   setPropertyRemove: React.Dispatch<React.SetStateAction<string | null>>;
   validProperty: IProperties[] | null;
+  modalAllImages: boolean;
+  setModalAllImages: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const GlobalContext = createContext({} as IGlobalContext);
 
 export function GlobalProvider({ children }: IGlobalProviderProps) {
   const [modalMobile, setModalMobile] = useState<boolean>(false);
+  const [modalAllImages, setModalAllImages] = useState<boolean>(false);
   const [modalSchedules, setModalSchedules] = useState<boolean>(false);
   const [property, setProperty] = useState<IProperties | null>(null);
   const [validProperty, setValidProperty] = useState<IProperties[] | null>(
@@ -91,6 +94,8 @@ export function GlobalProvider({ children }: IGlobalProviderProps) {
   return (
     <GlobalContext.Provider
       value={{
+        modalAllImages,
+        setModalAllImages,
         validProperty,
         propertyRemove,
         setPropertyRemove,

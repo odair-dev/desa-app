@@ -5,11 +5,12 @@ import Planta from "../../img/Planta.png";
 import Sala from "../../img/sala.png";
 import Sacada from "../../img/sacada.png";
 import Cozinha from "../../img/cozinha.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Raleway } from "next/font/google";
+import { GlobalContext } from "@/providers/GlobalContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ const raleway = Raleway({
 
 export default function Description() {
   const [slide, setSlide] = useState(1);
+  const { setModalAllImages } = useContext(GlobalContext);
 
   useEffect(() => {
     Aos.init();
@@ -81,6 +83,7 @@ export default function Description() {
                 ? styles.imgCarrousel7
                 : styles.none
             }
+            onClick={slide == 4 ? () => setModalAllImages(true) : () => null}
           />
           <Image
             priority={true}
@@ -103,6 +106,7 @@ export default function Description() {
                 ? styles.imgCarrousel1
                 : styles.none
             }
+            onClick={slide == 3 ? () => setModalAllImages(true) : () => null}
           />
           <Image
             priority={true}
@@ -125,6 +129,7 @@ export default function Description() {
                 ? styles.imgCarrousel2
                 : styles.none
             }
+            onClick={slide == 2 ? () => setModalAllImages(true) : () => null}
           />
 
           <Image
@@ -148,6 +153,7 @@ export default function Description() {
                 ? styles.imgCarrousel3
                 : styles.none
             }
+            onClick={slide == 1 ? () => setModalAllImages(true) : () => null}
           />
 
           <Image
@@ -171,6 +177,7 @@ export default function Description() {
                 ? styles.imgCarrousel4
                 : styles.none
             }
+            onClick={slide == 7 ? () => setModalAllImages(true) : () => null}
           />
           <Image
             priority={true}
@@ -193,6 +200,7 @@ export default function Description() {
                 ? styles.imgCarrousel5
                 : styles.none
             }
+            onClick={slide == 6 ? () => setModalAllImages(true) : () => null}
           />
           <Image
             priority={true}
@@ -215,6 +223,7 @@ export default function Description() {
                 ? styles.imgCarrousel6
                 : styles.none
             }
+            onClick={slide == 5 ? () => setModalAllImages(true) : () => null}
           />
 
           <button className={styles.btnRight} onClick={handleClickRight}>

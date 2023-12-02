@@ -1,0 +1,82 @@
+@keyframes animationModal{
+    0%{transform: translateY(-500px);}
+    100%{transform: translateY(0);}
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.divModal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(2px);
+    gap: 10px;
+    .container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: animationModal 0.5s;
+      gap: 10px;
+      position: relative;
+      .btnClose{
+        color: white;
+        font-size: 20rem;
+        font-weight: 600;
+        position: absolute;
+        right: 10px;
+        top: 4px;
+        cursor: pointer;
+      }
+      .imgFocus{
+        width: 95%;
+        height: 95%;
+        object-fit: contain;
+      }
+      .imgOff{
+          display: none;
+      }
+      .selector{
+          width: 96%;
+          height: 10%;
+          display: flex;
+          gap: 4px;
+          overflow: auto;
+          .imgSmallOn{
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            cursor: pointer;
+          }
+          .imgSmallOff{
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            opacity: 0.5;
+            cursor: pointer;
+            &:hover{
+              opacity: 1;
+            }
+          }
+      }
+    }
+}
+
+@media(min-width: 900px) {
+    .divModal .container{
+        width: 81.5%;
+        height: 90%;
+        .imgFocus{
+          width: 85%;
+          height: 85%;
+        }
+    }
+}
