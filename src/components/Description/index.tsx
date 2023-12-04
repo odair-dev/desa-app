@@ -5,6 +5,7 @@ import Planta from "../../img/Planta.png";
 import Sala from "../../img/sala.png";
 import Sacada from "../../img/sacada.png";
 import Cozinha from "../../img/cozinha.png";
+import LogoBars from "../../img/LogoBars.png";
 import { useContext, useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -48,7 +49,10 @@ export default function Description() {
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <h2 className={raleway.className}>Conheça os detalhes</h2>
+          <h2 className={`${raleway.className} ${styles.titleDefault}`}>
+            <Image src={LogoBars} alt={"Logo"} className={styles.bars} />
+            Conheça os detalhes
+          </h2>
         </div>
         <div
           className={styles.divImg}
@@ -234,11 +238,21 @@ export default function Description() {
           </button>
         </div>
         <div
+          className={styles.divMoreImages}
+          onClick={() => setModalAllImages(true)}
+        >
+          <i className={`fa-solid fa-camera ${styles.camera}`}></i>
+          <p className={styles.pImages}>Ver todas as fotos</p>
+        </div>
+        <div
           className={styles.divText}
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <h2 className={raleway.className}>Plantas</h2>
+          <h2 className={`${raleway.className} ${styles.titleDefault}`}>
+            <Image src={LogoBars} alt={"Logo"} className={styles.bars} />
+            Plantas
+          </h2>
         </div>
         <div
           className={styles.divDescription}
@@ -303,7 +317,10 @@ export default function Description() {
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <h2>Localização</h2>
+          <h2 className={`${raleway.className} ${styles.titleDefault}`}>
+            <Image src={LogoBars} alt={"Logo"} className={styles.bars} />
+            Localização
+          </h2>
         </div>
         <div
           className={styles.divMap}

@@ -11,92 +11,102 @@
         flex-direction: column;
         align-items: center;
         .divText{
-            margin-top: 100px;
+            margin-top: 10px;
             margin-bottom: 10px;
             width: 100%;
-            border-left: 5px solid rgb(30, 50, 80);
             border-radius: 4px;
             overflow: hidden;
-            h2{
+            .titleDefault{
                 margin: 0 0 0 6px;
                 color: rgb(30, 50, 80);
                 font-weight: 400;
                 font-size: 24rem;
+                .bars{     
+                    height: 50px;
+                    width: 50px;
+                }
             }
         }
         .divImg{
-            width: 98vw;
-            height: 42vw;
+            width: 100%;
+            height: 45vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8rem;
             overflow: hidden;
             position: relative;
-            .imgCarrousel1{
-                height: 40vw;
-                width: 67vw;     
+            .imgCarrousel1{ 
+                height: 95%;
+                width: 95%;
+                object-fit: contain;    
                 margin: 16rem 0;
                 position: absolute;
-                right: 217vw;
+                right: 231vw;
             }
-            .imgCarrousel2{
-                height: 40vw;
-                width: 67vw;    
+            .imgCarrousel2{    
+                height: 95%;
+                width: 95%;
+                object-fit: contain;
                 margin: 16rem 0;
                 position: absolute;
-                right: 150vw;
+                right: 154vw;
                 transition: 1s ease-in-out;
             }
-            .imgCarrousel3{
-                height: 40vw;
-                width: 67vw;     
+            .imgCarrousel3{     
+                height: 92%;
+                width: 92%;
+                object-fit: contain;
                 margin: 16rem 0;
                 position: absolute;
-                right: 83vw;
+                right: 77vw;
                 transition: 1s ease-in-out;
             }
-            .imgCarrousel4{
-                height: 40vw;
-                width: 67vw;     
+            .imgCarrousel4{     
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
                 margin: 16rem 0;
                 position: absolute;
-                right: 15vw;
+                right: 0vw;
                 transition: 1s ease-in-out;
                 cursor: pointer;
+                z-index: 2;
             }
-            .imgCarrousel5{
-                height: 40vw;
-                width: 67vw;     
+            .imgCarrousel5{     
+                height: 92%;
+                width: 92%;
+                object-fit: contain;
                 margin: 16rem 0;
                 position: absolute;
-                right: -53vw;
+                right: -69vw;
                 transition: 1s ease-in-out;
             }
-            .imgCarrousel6{
-                height: 40vw;
-                width: 67vw;     
+            .imgCarrousel6{     
+                height: 95%;
+                width: 95%;
+                object-fit: contain;
                 margin: 16rem 0;
                 position: absolute;
-                right: -120vw;
+                right: -138vw;
                 transition: 1s ease-in-out;
             }
-            .imgCarrousel7{
-                height: 40vw;
-                width: 67vw;     
+            .imgCarrousel7{     
+                height: 95%;
+                width: 95%;
+                object-fit: contain;
                 margin: 16rem 0;
                 position: absolute;
-                right: -187vw;
+                right: -207vw;
             }
             .btnRight{
                 position: absolute;
-                z-index: 1;
+                z-index: 3;
                 width: 8vw;
                 height: 30vw;
-                right: 20rem;
+                right: 0;
                 font-weight: 600;
                 color: rgb(30, 50, 80);
-                background-color: transparent;
+                background-color: rgba(255,255,255,0.5);
                 border: none;
                 i{
                     font-weight: 600;
@@ -105,18 +115,41 @@
             }
             .btnLeft{
                 position: absolute;
-                z-index: 1;
+                z-index: 3;
                 width: 8vw;
                 height: 30vw;
-                left: 20rem;
+                left: 0;
                 font-weight: 600;
                 color: rgb(30, 50, 80);
-                background-color: transparent;
+                background-color: rgba(255,255,255,0.5);
                 border: none;
                 i{
                     font-weight: 600;
                     font-size: 24rem;
                 }
+            }
+        }
+        .divMoreImages{
+            background-color: rgba(30, 50, 80, 0.6);
+            border-radius: 0 0 8px 8px;
+            padding: 6px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 12rem;
+            cursor: pointer;
+            transition: 0.5s;
+            &:hover{
+                background-color: rgba(30, 50, 80, 0.9);
+                padding: 6px 18px;
+            }
+            .camera{
+                color: white;
+            }
+            .pImages{
+                color: white;
+                font-weight: 600;
             }
         }
         .divMap{
@@ -167,33 +200,51 @@
 
     }
 }
-@media(min-width: 768px) {
-    .container .maxSize {
-        .divImg{
-            gap: 20rem;
-            .btnRight{
-                background-color: rgba(255, 255, 255, 0.7);
-                width: 4vw;
-                height: 4vw;
-                border-radius: 50rem;
-            }
-            .btnLeft{
-                background-color: rgba(255, 255, 255, 0.7);
-                width: 4vw;
-                height: 4vw;
-                border-radius: 50rem;
+@media(min-width: 1000px) {
+    .container .maxSize{
+      .divImg{
+        width: 100vw;
+        height: 42vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        .btnRight{
+            background-color: transparent;
+            i{
+                font-size: 40rem;
+                background-color: rgba(255,255,255,0.5);
+                padding: 8px 16px;
+                border-radius: 32px;
             }
         }
-        .divMap{
-            height: 450px;
+        .btnLeft{
+            background-color: transparent;
+            i{
+                font-size: 40rem;
+                background-color: rgba(255,255,255,0.5);
+                padding: 8px 16px;
+                border-radius: 32px;
+            }
         }
-    }
-}
-@media(min-width: 1143px) {
-    .container .maxSize .divDescription .left{
+      } 
+      .divMoreImages{
+        font-size: 16rem;
+      }
+      .divDescription .left{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         padding-left: 16rem;
+      }
+    }
+}
+@media(min-width: 1143px) {
+    .container .maxSize .divDescription .left{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding-left: 16rem;
     }
 }
