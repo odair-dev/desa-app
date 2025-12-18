@@ -9,7 +9,7 @@ import {
 } from "react";
 import { useRouter } from "next/navigation";
 import { IUserState } from "./UserContext";
-import { parseCookies } from "nookies";
+import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import { toast } from "react-toastify";
 
@@ -159,7 +159,7 @@ export function ScheduleProvider({ children }: IDefaultProviderProps) {
 
   async function getMySchedule() {
     setMySchedules(null);
-    const { "nextauth.token": recoveredToken } = parseCookies();
+    const recoveredToken = Cookies.get("nextauth.token");
     if (recoveredToken) {
       const decoded = jwt.decode(recoveredToken);
       if (decoded != null) {

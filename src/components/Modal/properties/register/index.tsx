@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { parseCookies } from "nookies";
+import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { api } from "@/services/api";
 import { useContext, useEffect, useRef } from "react";
@@ -41,7 +41,7 @@ export default function ModalRegisterProperty() {
   });
 
   async function registerProperty(data: any) {
-    const { "nextauth.token": recoveredToken } = parseCookies();
+    const recoveredToken = Cookies.get("nextauth.token");
     if (recoveredToken) {
       api.defaults.headers.common.Authorization = `Bearer ${recoveredToken}`;
       try {

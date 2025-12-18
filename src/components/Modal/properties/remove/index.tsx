@@ -1,4 +1,4 @@
-import { parseCookies } from "nookies";
+import Cookies from "js-cookie";
 import styles from "./styles.module.scss";
 import { api } from "@/services/api";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ export default function ModalRemoveProperty() {
   const router = useRouter();
 
   async function deleteProperty() {
-    const { "nextauth.token": recoveredToken } = parseCookies();
+    const recoveredToken = Cookies.get("nextauth.token");
     if (recoveredToken) {
       api.defaults.headers.common.Authorization = `Bearer ${recoveredToken}`;
       try {

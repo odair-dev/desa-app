@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { setCookie, parseCookies } from "nookies";
+import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 
 export interface IUserContext {
@@ -63,7 +63,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   const [userToUpdate, setUserToUpdate] = useState<any | null>(null);
 
   function verifySigin() {
-    const { "nextauth.token": recoveredToken } = parseCookies();
+    const recoveredToken = Cookies.get("nextauth.token");
     if (recoveredToken) {
       setToken(recoveredToken);
       const decoded = jwt.decode(recoveredToken);
@@ -113,12 +113,11 @@ export function UserProvider({ children }: IDefaultProviderProps) {
           setUserId(`${id}`);
         }
       }
-      setCookie(null, "nextauth.token", tokenReceived, {
-        maxAge: 60 * 60 * 1, //1 hour
+      Cookies.set("nextauth.token", tokenReceived, {
+        expires: 1/24, // 1 hour
+        path: "/",
+        sameSite: "lax",
       });
-      // setCookie(undefined, "nextauth.token", tokenReceived, {
-      //   maxAge: 60 * 60 * 1, //1 hour
-      // });
       return true;
     } catch (error) {
       console.log("Não foi possível realizar o login. \n", error);

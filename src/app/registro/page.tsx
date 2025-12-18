@@ -8,7 +8,7 @@ import Logotipo from "../../img/Logo.png";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/providers/GlobalContext";
-import { destroyCookie } from "nookies";
+import Cookies from "js-cookie";
 import { ScheduleContext } from "@/providers/ScheduleContext";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -96,7 +96,7 @@ export default function Register() {
   }
 
   function logout() {
-    destroyCookie(null, "nextauth.token");
+    Cookies.remove("nextauth.token");
     setUser(null);
     setToken(null);
     setUserId(null);

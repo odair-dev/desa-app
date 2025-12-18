@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext, useEffect, useRef } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
-import { parseCookies } from "nookies";
+import Cookies from "js-cookie";
 import { api } from "@/services/api";
 import { toast } from "react-toastify";
 
@@ -58,7 +58,7 @@ export function ModalEditProperty() {
   }
 
   async function updateProperty(data: any) {
-    const { "nextauth.token": recoveredToken } = parseCookies();
+    const recoveredToken = Cookies.get("nextauth.token");
     if (recoveredToken) {
       api.defaults.headers.common.Authorization = `Bearer ${recoveredToken}`;
       try {

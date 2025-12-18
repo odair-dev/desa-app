@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/providers/GlobalContext";
 import ModalPassword from "@/components/Modal/confirmPassword";
-import { destroyCookie } from "nookies";
+import Cookies from "js-cookie";
 import { ScheduleContext } from "@/providers/ScheduleContext";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -82,7 +82,7 @@ export default function User() {
   async function deleteUser(id: string) {
     const statusOk = await removeUser(id);
     if (statusOk) {
-      destroyCookie(null, "nextauth.token");
+      Cookies.remove("nextauth.token");
       setUser(null);
       setToken(null);
       setUserId(null);

@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { GlobalContext } from "@/providers/GlobalContext";
 import Link from "next/link";
 import { UserContext } from "@/providers/UserContext";
-import { destroyCookie } from "nookies";
+import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ScheduleContext } from "@/providers/ScheduleContext";
@@ -19,7 +19,7 @@ export default function Header() {
   const { getMySchedule, setMySchedules } = useContext(ScheduleContext);
 
   function logout() {
-    destroyCookie(null, "nextauth.token");
+    Cookies.remove("nextauth.token");
     setUser(null);
     setToken(null);
     setUserId(null);
